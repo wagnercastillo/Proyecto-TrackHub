@@ -1,9 +1,7 @@
-/*!
- * froala_editor v3.2.3 (https://www.froala.com/wysiwyg-editor)
- * License https://froala.com/wysiwyg-editor/terms/
- * Copyright 2014-2020 Froala Labs
- */
-
+.u-border-5{
+  background: transparent;
+  border-color: transparent;
+}
 .fr-clearfix::after {
   clear: both;
   display: block;

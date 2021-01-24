@@ -3,7 +3,10 @@
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2020 Froala Labs
  */
-
+.u-border-5{
+  background: transparent;
+  border-color: transparent;
+}
 .fr-clearfix::after {
   clear: both;
   display: block;
