@@ -28,6 +28,13 @@ h2 {
 	color: #333;
 	text-transform: uppercase;
 }
+h6 {
+	margin: 0 0 20px 0;
+	font-weight: 500;
+	font-size: 34px;
+	color: #333;
+	text-transform: uppercase;
+}
 h3 {
 	font-size: 22px;
 	font-weight: 500;
@@ -264,7 +271,7 @@ header .intro-text {
 	background: #444 url(../img/menu-bg.jpg) center center no-repeat fixed;
 	background-size: cover;
 }
-#restaurant-menu .section-title h2 {
+#restaurant-menu .section-title h2 h22{
 	color: #fff;
 }
 #restaurant-menu img {
@@ -336,7 +343,7 @@ header .intro-text {
   right:0;
 }
 
-.partners h2{
+.partners h2 h22{
   color:white;
   font-size:32px;
   font-weight:300;
@@ -373,7 +380,7 @@ header .intro-text {
 	background-size: cover;
 	margin-bottom: 70px;
 }
-#portfolio .section-title h2 {
+#portfolio .section-title h2 h22{
 	color: #fff;
 }
 .categories {
@@ -496,7 +503,7 @@ ol.type li a:hover {
 	padding: 120px 0 80px 0;
 	background: rgba(0, 0, 0, 0.6);
 }
-#team h2, #team p {
+#team h2 h22, #team p {
 	color: #fff;
 }
 #team hr {
@@ -553,7 +560,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FF5733', end
 	padding: 80px 0;
 	background: #FF5733;
 }
-#call-reservation h2 {
+#call-reservation h2 h22{
 	font-family: 'Open Sans', sans-serif;
 	color: #fff;
 	font-weight: 400;

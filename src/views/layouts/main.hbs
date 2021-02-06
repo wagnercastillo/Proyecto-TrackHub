@@ -40,50 +40,41 @@
       margin: 0;
       padding: 0;
     }
+
     .swiper-container {
       width: 100%;
       height: 70vh;
       padding-top: 50px;
       padding-bottom: 50px;
     }
+
     .swiper-slide {
       background-position: center;
       background-size: cover;
       width: 370px;
       height: 370px;
     }
-</style>
+  </style>
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
   <!-- Header -->
 
-  {{>navigation}}
 
-  <header id="header">
-    <div class="intro">
-      <div class="overlay">
-        <div class="container">
-          <div class="row">
-            <div class="intro-text">
-              <h1>Viaja fácil y rapido</h1>
-              <!--<p>Restaurant / Coffee / Pub</p>-->
 
-              <a href="#portfolio" class="btn btn-custom btn-lg page-scroll">Buscar ruta</a>
-              <div class="container p-4" class="intro">
 
-              </div>
-            </div>
-          </div>
+  {{{body}}}
+
+  {{#if cooperativas}}
+  <div id="contact" class="text-center">
+
+    <section class="" id="partners">
+      <div class="section-title text-center">
+        <div class="content">
+          <h2>Cooperativas Afiliadas</h2>
+          <hr>
         </div>
       </div>
-    </div>
-
-  </header>
-  <div>
-    <div id="container">
-      <br>
-    </div>
   </div>
   <div id="portfolio">
     <div class="section-title text-center center">
@@ -100,23 +91,8 @@
       </div>
     </div>
   </div>
+  {{/if}}
 
-  <div id="container" class="container">
-    <div class="row">
-      <div class="col-xs-12 col-md-6 ">
-        <div class="about-img"><img src="/img/logo5.png" class="img-responsive" alt=""></div>
-      </div>
-      <div class="col-xs-12 col-md-6">
-        <div class="about-text">
-          <h2>Sobre Nosotros</h2>
-          <hr>
-          <p>Brindamos una gestion segura de viajes en transporte terrestre en el sur del Ecuador.</p>
-          <h3>Nuestro Objetivo</h3>
-          <p>Facilitar a los lojanos la gestión de sus viajes por transporte terrestre y los pagos de los mismos</p>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- SWIPER SCRIPS-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.5/swiper-bundle.min.js"></script>
