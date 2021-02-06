@@ -1,23 +1,92 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TCT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TrackHub</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="/fonts/font-awesome/css/font-awesome.css">
+
+  <!-- Stylesheet
+    ================================================== -->
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/css/nivo-lightbox/nivo-lightbox.css">
+  <link rel="stylesheet" type="text/css" href="/css/nivo-lightbox/default.css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700" rel="stylesheet">
+
   <!-- Framework a utilizar Boostrap 4 -->
-  <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.min.css">
+  
   <!-- SWIPPER-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.5/swiper-bundle.min.css">
 
-  <link rel="stylesheet" type="text/css"  href="../img/style.css">
+  <link rel="stylesheet" type="text/css" href="../img/style.css">
+
+  
 </head>
 
-<body>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+  <!-- Header -->
+  
   {{>navigation}}
-  <div class="container p-4" class="intro">
-    {{{body}}}
-  </div>
+
+  <header id="header">
+      <div class="intro">
+        <div class="overlay">
+          <div class="container">
+            <div class="row">
+              <div class="intro-text">
+                <h1>Viaja fácil y rapido</h1>
+                <!--<p>Restaurant / Coffee / Pub</p>-->
+              
+                <a href="#portfolio" class="btn btn-custom btn-lg page-scroll">Buscar ruta</a>
+                <div class="container p-4" class="intro">
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </header>
+    <div>
+      <div id = "container">
+        <br>
+      </div> 
+    </div>
+  <div id="portfolio">
+      <div class="section-title text-center center">
+        {{{body}}}
+      </div>
+    </div>
+    
+      <div id = "container" class="container">
+        <div class="row">
+          <div class="col-xs-12 col-md-6 ">
+            <div class="about-img"><img src="/img/logo5.png" class="img-responsive" alt=""></div>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <div class="about-text">
+              <h2>Sobre Nosotros</h2>
+              <hr>
+              <p>Brindamos una gestion segura de viajes en transporte terrestre en el sur del Ecuador.</p>
+              <h3>Nuestro Objetivo</h3>
+              <p>Facilitar a los lojanos la gestión de sus viajes por transporte terrestre y los pagos de los mismos</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
   <!-- SWIPER SCRIPS-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.5/swiper-bundle.min.js"></script>
   <script>
@@ -38,6 +107,14 @@
       },
     });
   </script>
+  <script type="text/javascript" src="/js/jquery.1.11.1.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/SmoothScroll.js"></script>
+    <script type="text/javascript" src="/js/nivo-lightbox.js"></script>
+    <script type="text/javascript" src="/js/jquery.isotope.js"></script>
+    <script type="text/javascript" src="/js/jqBootstrapValidation.js"></script>
+    <script type="text/javascript" src="/js/contact_me.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
 </body>
 
 </html>

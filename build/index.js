@@ -1,9 +1,12 @@
 "use strict";
 
-var _express = _interopRequireDefault(require("express"));
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+var app = require('./app');
 
-var app = (0, _express["default"])();
-app.listen(2700);
-console.log('Servidor escuchando en el puerto ', 2700);
+app.listen(app.get('port'), function () {
+  console.log('Servidor escuchando en el puerto ', app.get('port'));
+  console.log('Envioment: ', process.env.NODE_ENV);
+});

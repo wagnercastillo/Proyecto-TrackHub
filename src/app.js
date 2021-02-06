@@ -3,6 +3,9 @@ const morgan = require('morgan')
 const multer = require('multer')
 const path = require('path')
 const exphbs = require('express-handlebars')
+const methodOverride = require('method-override')
+const session = require('express-session')
+
 import {createRoles} from './libs/inicioSetup'
 
 //Inicializations
@@ -27,6 +30,13 @@ app.set('view engine', '.hbs');
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+app.use(methodOverride('_method'));
+app.use(session({
+    secret: 'mysecretapp',
+    resave: true,
+    saveUninitialized: true
+
+}))
 const storage = multer.diskStorage({
     destination: path.join(__dirname,'public/uploads'),
     filename: (req, file, cb)=>{
@@ -38,5 +48,9 @@ app.use(multer({storage}).single('image'));
  
 //Routes
 app.use(require('./routes/cooperativa.routes'));
+app.use(require('./routes/user.routes'));
 app.use('/api/auth', authRuta)
 module.exports=app;
+
+//Static files
+app.use(express.static(path.join(__dirname, 'public')));

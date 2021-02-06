@@ -1,4 +1,11 @@
 import {Router} from 'express'
 const router = Router()
 
-export default router;
+router.get('/users/signin',(req, res) => {
+    res.render('users/signin');
+});
+router.get('/users/signout',(req, res) => {
+    res.render('users/signout');
+});
+
+module.exports = router;
