@@ -4,6 +4,10 @@ import config from '../config'
 import Rol from '../models/Rol';
 import { json } from 'express';
 
+export const obtenerFrmUsuario = async (req, res) => {
+    res.render('users/signup');
+ }
+
 export const signUp = async (req, res) =>{
     const {nombreUsuario, email, contrasenia, roles}=req.body;
     //Verificar si el usuario existe

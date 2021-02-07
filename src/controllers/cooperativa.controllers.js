@@ -11,7 +11,7 @@ const fs=require('fs-extra');
 
 export const Principal = async (req, res) => {
    const cooperativas= await Cooperativa.find({}).lean();
-    res.render('frm_listaCooperativa',{cooperativas}); 
+    res.render('frm_Principal',{cooperativas}); 
     console.log(cooperativas)
 }
 
