@@ -1,0 +1,33 @@
+
+
+<!-- Modal -->
+<div class="modal" id="nuevaCooperativa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modificar Cooperativa</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <form action="/guardarCooperativa/add" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input type="text" name="nombre" class="form-control" placeholder="Ingrese Nombre Cooperativa ">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="direccion" class="form-control"
+                            placeholder="Ingrese direccion Cooperativa "></textarea>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="custom-file">
+                            <input type="file" name="image" class="custom-file-input" id="inputGroupFile01">
+                            <label for="inputGroupFile01" class="custom-file-label"> Seleccionar Logo</label>
+                        </div>
+                    </div>
+                    <button class="btn tbn-primary"> Guardar</button>
+
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
