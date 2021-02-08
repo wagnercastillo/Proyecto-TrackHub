@@ -1,0 +1,42 @@
+<!-- Modal -->
+<div class="modal" id="dardebajaCooperativa" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel1">Dar de baja Cooperativa</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
+                        class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Direccion</th>
+                            <th>Imagen</th>
+                            <th>Accion</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each cooperativas}}
+                        <tr>
+                            <td>{{nombre}}</td>
+                            <td>{{direccion}}</td>
+                            <td>
+                                <a href="{{imageURL}}" target="_black" class="btn btn-primary">Vista</a>
+                            </td>
+                            <td><a class="btn btn-danger">Inabilitar</a></td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>

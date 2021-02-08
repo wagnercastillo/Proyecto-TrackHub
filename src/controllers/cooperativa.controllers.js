@@ -31,16 +31,18 @@ export const createCooperativa = async (req, res)=>{
    });
    await newCoperativa.save();
    await fs.unlink(req.file.path)
-   res.redirect('/')
+   res.redirect('/guardarCooperativa/add')
 }
 
+//modificar
 export const getCooperativaById =  async(req, res) => {
-   //const cooperativa= await Cooperativa.findById(req.params.cooperativaId);
+   const cooperativa = await Cooperativa.findById(req.params.id);
+   res.render('partials/modificar_cooperativa_formulario', { cooperativa });
 }
 export const updateCooperativaById = async (req, res) => {
-   //const cooperativaUpdate = await Cooperativa.findByIdAndUpdate(req.params.cooperativaId, req.body,{
-     /// new: true
-   ///})
+   const {nombre, direccion} = req.body;
+   await Cooperativa.findByIdAndUpdate(req.params.id,{nombre, direccion});
+   res.redirect('/guardarCooperativa/add');
 } 
 export const deleteCooperativaById = async(req, res) => {
 
