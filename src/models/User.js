@@ -1,17 +1,31 @@
 import { Schema, model } from 'mongoose';
 import bcrypt  from 'bcryptjs'
+
 const usuarioBD = new Schema({
-    nombreUsuario: {
+    cedula: {
         type: String,
         unique: true
     },
-    email: {
+    nombre: {
+        type: String,
+        unique: true
+    },
+    apellido: {
+        type: String,
+        unique: true
+    },
+    correo: {
         type: String,
         unique: true
     },
     contrasenia: {
         type: String,
         required: true
+    },
+    estado:{
+        type:Boolean,
+        required: true, 
+        default:true
     },
     roles: [{
         ref: "Rol",
@@ -22,11 +36,11 @@ const usuarioBD = new Schema({
     versionKey: false
 });
 
-usuarioBD.static.encryptPassword=async (contrasenia) =>{
-    const salt= bcrypt.genSalt(10)
-    return await bcrypt.hash(contrasenia, salt)
-}
-usuarioBD.static.comparePassword=async (contrasenia, receiveContrasenia) =>{
+usuarioBD.statics.encryptPassword = async (contrasenia) => {
+    const salt = await bcrypt.genSalt(10);
+    return await bcrypt.hash(contrasenia, salt);
+};
+usuarioBD.statics.comparePassword = async (contrasenia, receiveContrasenia) => {
     return await bcrypt.compare(contrasenia, receiveContrasenia)
-}
+  }
 export default model('Usuario', usuarioBD);

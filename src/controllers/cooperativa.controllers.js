@@ -21,7 +21,7 @@ export const getCooperativaPrincipal = async (req, res) => {
 }
 export const createCooperativa = async (req, res)=>{
    const { nombre, direccion } = req.body;
-   console.log(req.file);
+   console.log('hola');
    const result = await cloudinary.v2.uploader.upload(req.file.path);
    const newCoperativa = new Cooperativa({
       nombre,

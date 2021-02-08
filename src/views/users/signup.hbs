@@ -10,28 +10,28 @@
                     <hr>
                 </div>
                 <div class="col-md-10 col-md-offset-1">
-                    <form>
+                    <form action="/signup/add" method="POST" enctype="multipart/form-data">
                         <div class="form-row mb-2">
                             <div class="form-group col-md-6">
                                 <label class="text-white">Nombre <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" placeholder="Tu nombre">
+                                <input type="text" name="nombre" class="form-control" placeholder="Tu nombre">
                             </div>
                             <div class="form-group col-md-6">
                                 <label class="text-white">Apellido <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" placeholder="Tu apellido">
+                                <input type="text" name="apellido"class="form-control" placeholder="Tu apellido">
                             </div>
                         </div>
                         <div class="form-group mb-3">
                             <div class="form-group col-md-6">
                             <label class="text-white">Correo electrónico <span
                                     class="text-danger">*</span></label>
-                            <input type="email" class="form-control" placeholder="Ingresa tu correo electrónico">
+                            <input type="email" name="correo"class="form-control" placeholder="Ingresa tu correo electrónico">
                             </div>
                         </div>
                         <div class="form-row mb-2">
                             <div class="form-group col-md-6">
                                 <label class="text-white">Contraseña <span class="text-danger">*</span></label>
-                                <input type="password" class="form-control" placeholder="Ingresa una contraseña">
+                                <input type="password" name="contrasenia"class="form-control" placeholder="Ingresa una contraseña">
                             
                                 <label class="text-white">Confirmación <span class="text-danger">*</span></label>
                                 <input type="password" class="form-control" placeholder="Repita la contraseña">
@@ -40,7 +40,7 @@
                         <div class="form-group mb-3">
                             <div class="form-group col-md-6">
                             <label class="text-white">Numero de cedula <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" placeholder="Ingresa los numeros de cedula">
+                            <input type="text"  name="cedula" class="form-control" placeholder="Ingresa los numeros de cedula">
                             </div>
                         </div>
                         <div class="form-group mb-5">
@@ -55,15 +55,11 @@
                             </div> 
                             </div>
                             <div >
-                                <button class="btn btn-primary width-100">Regístrate</button>
-                            </div>
-                            
-                        </div>
-                        
+                                <button class="btn btn-primary">Regístrate</button>
+                            </div>                            
+                        </div>                        
                     </form>
-
                 </div>
-
             </div>
         </div>
     </div>
