@@ -5,6 +5,7 @@ const path = require('path')
 const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const session = require('express-session')
+const bcrypt = require('bcryptjs');
 
 import {createRoles} from './libs/inicioSetup'
 
@@ -12,6 +13,7 @@ import {createRoles} from './libs/inicioSetup'
 const app= express();
 createRoles();
 require('./database');
+
 import authRuta from './routes/auth.routes'
 
 //Settings
@@ -49,7 +51,9 @@ app.use(multer({storage}).single('image'));
 //Routes
 app.use(require('./routes/cooperativa.routes'));
 app.use(require('./routes/auth.routes'));
-app.use('/api/auth', authRuta)
+
+//app.use('/api/auth', authRuta)
+
 module.exports=app;
 
 //Static files
