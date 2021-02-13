@@ -21,17 +21,31 @@ export const getCooperativaPrincipal = async (req, res) => {
 }
 export const createCooperativa = async (req, res) => {
    const { nombre, direccion } = req.body;
-   console.log('hola');
-   const result = await cloudinary.v2.uploader.upload(req.file.path);
-   const newCoperativa = new Cooperativa({
-      nombre,
-      direccion,
-      imageURL: result.url,
-      public_id: result.public_id
-   });
-   await newCoperativa.save();
-   await fs.unlink(req.file.path)
-   res.redirect('/guardarCooperativa/add')
+   const errors = [];
+   if (!nombre) {
+      errors.push({ text: 'Ingrese el nombre de la Cooperativa' });
+   }
+   if (!direccion) {
+      errors.push({ text: 'Ingrese el direccion de la Cooperativa' });
+   }
+   if (!req.file) {
+      errors.push({ text: 'No ha selecionado el logo de la Cooperativa' });
+   }
+   if (errors.length > 0) {
+      const cooperativas = await Cooperativa.find({}).lean();
+      res.render('cooperativas/frm_regCooperativa', { cooperativas, errors });
+   } else {
+      const result = await cloudinary.v2.uploader.upload(req.file.path);
+      const newCoperativa = new Cooperativa({
+         nombre,
+         direccion,
+         imageURL: result.url,
+         public_id: result.public_id
+      });
+      await newCoperativa.save();
+      await fs.unlink(req.file.path)
+      res.redirect('/guardarCooperativa/add')
+   }
 }
 
 //modificar
@@ -54,17 +68,15 @@ export const updateCooperativaById = async (req, res) => {
 }
 
 export const editarCooperativaById = async (req, res) => {
-   const { id } = req.params;
    const { nombre, direccion } = req.body;
-   console.log('hola');
    const result = await cloudinary.v2.uploader.upload(req.file.path);
-   const upCoperativa = new Cooperativa({
+
+   const cooperativa = await Cooperativa.findByIdAndUpdate(req.params.id, {
       nombre,
       direccion,
       imageURL: result.url,
       public_id: result.public_id
    });
-   const eliminar = await cloudinary.v2.uploader.destroy(cooperativa.id);
-   const cooperativa = await Cooperativa.findByIdAndUpdate(id, upCoperativa);
+   console.log(cooperativa);
    res.redirect('/guardarCooperativa/add');
-}
+}        
