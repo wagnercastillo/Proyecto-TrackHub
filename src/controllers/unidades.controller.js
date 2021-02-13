@@ -16,8 +16,8 @@ export const Principal = async (req, res) => {
 }
 
 export const getUnidades = async (req, res) => {
-   const cooperativas = await Cooperativa.find({}).lean();
-   res.render('cooperativas/frm_regCooperativa', { cooperativas });
+   const Unidades = await Unidad.find({}).lean();
+   res.render('Unidad/Unidades', { Unidades });
 }
 export const createUnidades = async (req, res) => {
    const { nombre, direccion } = req.body;
