@@ -82,19 +82,19 @@ export const editarCooperativaById = async (req, res) => {
    if (errors.length > 0) {
       const { id } = req.params;
       const coop = await Cooperativa.findById(id).lean();
-      res.render('cooperativas/frm_editCooperativa', { coop,errors},)
+      res.render('cooperativas/frm_editCooperativa', { coop, errors },)
    } else {
-   
-   const result = await cloudinary.v2.uploader.upload(req.file.path);
 
-   const cooperativa = await Cooperativa.findByIdAndUpdate(req.params.id, {
-      nombre,
-      direccion,
-      imageURL: result.url,
-      public_id: result.public_id
+      const result = await cloudinary.v2.uploader.upload(req.file.path);
 
-   });
-   console.log(cooperativa);
-   res.redirect('/guardarCooperativa/add');
-}
+      const cooperativa = await Cooperativa.findByIdAndUpdate(req.params.id, {
+         nombre,
+         direccion,
+         imageURL: result.url,
+         public_id: result.public_id
+
+      });
+      console.log(cooperativa);
+      res.redirect('/guardarCooperativa/add');
+   }
 }        

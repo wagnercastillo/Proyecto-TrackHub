@@ -49,6 +49,7 @@ const storage = multer.diskStorage({
 app.use(multer({storage}).single('image'));
  
 //Routes
+app.use(require('./routes/frecuencia.routes'));
 app.use(require('./routes/cooperativa.routes'));
 app.use(require('./routes/auth.routes'));
 app.use(require('./routes/unidades.routes'));
