@@ -53,6 +53,7 @@ app.use(require('./routes/frecuencia.routes'));
 app.use(require('./routes/cooperativa.routes'));
 app.use(require('./routes/auth.routes'));
 app.use(require('./routes/unidades.routes'));
+app.use(require('./routes/ruta.routes'));
 //app.use('/api/auth', authRuta)
 
 module.exports=app;

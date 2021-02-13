@@ -7,7 +7,7 @@ import * as rutaControllers from '../controllers/Ruta.controller'
 import {
     verifyToken
 } from '../middlewars'
-router.get('/', rutaControllers.Principal)
+
 
 router.get('/guardarRuta/add', rutaControllers.getRutaPrincipal)
 
