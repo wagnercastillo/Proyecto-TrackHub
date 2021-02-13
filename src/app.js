@@ -51,6 +51,8 @@ app.use(multer({storage}).single('image'));
 //Routes
 app.use(require('./routes/cooperativa.routes'));
 app.use(require('./routes/auth.routes'));
+app.use(require('./routes/unidades.routes'));
+
 
 //app.use('/api/auth', authRuta)
 
