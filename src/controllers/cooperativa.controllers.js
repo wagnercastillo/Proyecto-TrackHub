@@ -37,8 +37,8 @@ export const createCooperativa = async (req, res) => {
 //modificar
 export const enabledCooperativa = async (req, res) => {
    const { id } = req.params;
-   const coop= await Cooperativa.findById(id);
-   coop.estado=!coop.estado;
+   const coop = await Cooperativa.findById(id);
+   coop.estado = !coop.estado;
    await coop.save();
    res.redirect('/guardarCooperativa/add')
 }
@@ -49,13 +49,22 @@ export const getCooperativaById = async (req, res) => {
 }
 export const updateCooperativaById = async (req, res) => {
    const { id } = req.params;
-   const coop= await Cooperativa.findById(id);
-   res.render('cooperativas/modificar_cooperativa',{coop})
-   //const { nombre, direccion } = req.body;
-   //await Cooperativa.findByIdAndUpdate(req.params.id, { nombre, direccion });
-   //res.redirect('/guardarCooperativa/add');
+   const coop = await Cooperativa.findById(id).lean();
+   res.render('cooperativas/frm_editCooperativa', { coop })
 }
 
-export const deleteCooperativaById = async (req, res) => {
-
+export const editarCooperativaById = async (req, res) => {
+   const { id } = req.params;
+   const { nombre, direccion } = req.body;
+   console.log('hola');
+   const result = await cloudinary.v2.uploader.upload(req.file.path);
+   const upCoperativa = new Cooperativa({
+      nombre,
+      direccion,
+      imageURL: result.url,
+      public_id: result.public_id
+   });
+   const eliminar = await cloudinary.v2.uploader.destroy(cooperativa.id);
+   const cooperativa = await Cooperativa.findByIdAndUpdate(id, upCoperativa);
+   res.redirect('/guardarCooperativa/add');
 }

@@ -11,8 +11,8 @@ router.post('/guardarCooperativa/add', cooperativaControllers.createCooperativa)
  
 router.get('/enabledCooperativa/:id', cooperativaControllers.enabledCooperativa)
 
-router.get('/editar/:id', cooperativaControllers.updateCooperativaById)
+router.get('/cooperativaEdit/:id', cooperativaControllers.updateCooperativaById)
 
-router.delete('/:cooperativaId', cooperativaControllers.deleteCooperativaById)
+router.post('/cooperativaEdit/:id', cooperativaControllers.editarCooperativaById)
 
 module.exports= router;
