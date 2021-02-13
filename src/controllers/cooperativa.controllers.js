@@ -69,6 +69,22 @@ export const updateCooperativaById = async (req, res) => {
 
 export const editarCooperativaById = async (req, res) => {
    const { nombre, direccion } = req.body;
+   const errors = [];
+   if (!nombre) {
+      errors.push({ text: 'Ingrese el nombre de la Cooperativa' });
+   }
+   if (!direccion) {
+      errors.push({ text: 'Ingrese el direccion de la Cooperativa' });
+   }
+   if (!req.file) {
+      errors.push({ text: 'No ha selecionado el logo de la Cooperativa' });
+   }
+   if (errors.length > 0) {
+      const { id } = req.params;
+      const coop = await Cooperativa.findById(id).lean();
+      res.render('cooperativas/frm_editCooperativa', { coop,errors},)
+   } else {
+   
    const result = await cloudinary.v2.uploader.upload(req.file.path);
 
    const cooperativa = await Cooperativa.findByIdAndUpdate(req.params.id, {
@@ -76,7 +92,9 @@ export const editarCooperativaById = async (req, res) => {
       direccion,
       imageURL: result.url,
       public_id: result.public_id
+
    });
    console.log(cooperativa);
    res.redirect('/guardarCooperativa/add');
+}
 }        
