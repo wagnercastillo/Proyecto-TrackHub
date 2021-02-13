@@ -1,0 +1,106 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<nav id="menu" class=" intro navbar navbar-fixed-top">
+    <div id="contact" class="text-center" style=" background-color: rgba(59, 59, 59, 0.651);">
+
+        <div class="section-title text-center">
+            <h1>Registro de Cooperativa </h1>
+            <h2>Track Hub al servicio </h2>
+            <hr>
+        </div>
+        <div class="col-md-10 col-md-offset-1">
+            <form action="/guardarCooperativa/add" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="text" name="nombre" class="form-control" placeholder="Ingrese Nombre Cooperativa ">
+                </div>
+                <div class="form-group">
+                    <textarea name="direccion" class="form-control"
+                        placeholder="Ingrese direccion Cooperativa "></textarea>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="custom-file">
+                        <input type="file" name="image" class="custom-file-input" id="inputGroupFile01">
+                        <label for="inputGroupFile01" class="custom-file-label"> Seleccionar
+                            Logo</label>
+                    </div>
+                </div>
+                <button class="btn tbn-primary" style="background-color: #3092d3; / * * Verde /
+border: none;
+color: blanco;
+padding: 1px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;"> Guardar</button>
+            </form>
+            <col-md-8>
+                <table class="table table-striped table-bordered table-hover table-dark">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Direccion</th>
+                            <th>Operaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each cooperativas}}
+                        <tr>
+                            <td>{{nombre}}</td>
+                            <td>{{direccion}}</td>
+                            <td>
+                                {{#if estado}}
+                                <a href="/enabledCooperativa/{{_id}}" class="btn btn-success">
+                                    Inhabilitar
+                                </a>
+                                {{else}}
+                                <a href="/enabledCooperativa/{{_id}}" class="btn btn-secondary"> 
+                                Habilitar
+                                </a>                                   
+                               {{/if}}
+                                <a href="/editar/{{_id}}" target="_black" class="btn btn-secondary">Editar</a>
+                                <a href="{{imageURL}}" target="_black" class="btn btn-info">Vista</a>
+                                 <a href="#" data-toggle="modal" data-target="#editarCooperativa" class="btn btn-info">xxxxxx</a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </col-md-8>
+        </div>
+    </div>
+</nav>
+
+<div class="modal" id="editarCooperativa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nueva Cooperativa</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
+                        class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <form action="/guardarCooperativa/add" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input type="text" name="nombre" class="form-control" placeholder="Ingrese Nombre Cooperativa ">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="direccion" class="form-control"
+                            placeholder="Ingrese direccion Cooperativa "></textarea>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="custom-file">
+                            </br>
+                            <label for="inputGroupFile01" class="custom-file-label"> Seleccionar Logo</label>
+                            <input type="file" name="image" class="custom-file-input" id="inputGroupFile01">
+                            </br>
+                        </div>
+                    </div>
+                    </br>
+                    <div class="text-center">
+                        <button class="btn tbn-primary"> Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -215,7 +215,7 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 	font-family: 'Dancing Script', cursive;
 	color: #fff;
 	font-size: 10em;
-	font-weight: 700;
+	font-weight: 400;
 	margin-top: 0;
 	margin-bottom: 10px;
 }
@@ -374,7 +374,7 @@ header .intro-text {
 }
 /* Portfolio Section */
 #portfolio {
-	padding: 0 0 150px 0;
+	padding: 0 0 0px 0;
 }
 #portfolio .section-title {
 	background: #444 url(../img/gallery-bg.jpg) center center no-repeat fixed;
@@ -578,8 +578,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FF5733', end
 }
 /* Contact Section */
 #contact {
-	padding: 100px 0 60px 0;
-	background: #F6F6F6;
+	padding: 100px 0 10px 0;
+	background: #804b4b;
 }
 #contact .section-title p {
 	color: #777;
@@ -639,10 +639,10 @@ color: #777;
 color: #777;
 }
 #contact .contact-item {
-	margin: 20px 0 40px 0;
+	margin: 20px 0 20px 0;
 }
 #contact .contact-item span {
-	font-weight: 400;
+	font-weight: 300;
 	color: #aaa;
 	text-transform: uppercase;
 	margin-bottom: 6px;

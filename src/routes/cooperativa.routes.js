@@ -9,9 +9,9 @@ router.get('/guardarCooperativa/add',cooperativaControllers.getCooperativaPrinci
 
 router.post('/guardarCooperativa/add', cooperativaControllers.createCooperativa)
  
-router.get('/guardarCooperativa/modify/:id', cooperativaControllers.getCooperativaById)
+router.get('/enabledCooperativa/:id', cooperativaControllers.enabledCooperativa)
 
-router.put('/guardarCooperativa/modify/:id', cooperativaControllers.updateCooperativaById)
+router.get('/editar/:id', cooperativaControllers.updateCooperativaById)
 
 router.delete('/:cooperativaId', cooperativaControllers.deleteCooperativaById)
 
