@@ -3,7 +3,7 @@ const {
 } = require('express');
 const router = Router();
 
-import * as rutaControllers from '../controllers/Ruta.controller'
+import * as rutaControllers from '../controllers/ruta.controller'
 import {
     verifyToken
 } from '../middlewars'

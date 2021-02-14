@@ -2,7 +2,7 @@
     integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
 
-<!--Controlo de Ingreso dedatos-->
+<!--Controlo de Ingreso de datos-->
 <script type="text/javascript">
     function inhabilitar(){
         var respuesta = confirm("¿Estas seguro que deseas HABILITAR la cooperativa?");
@@ -128,16 +128,16 @@ font-size: 16px;"> Guardar</button>
           <td>{{precio}}</td>
           <td>
             {{#if estado}}
-            <a href="/enabledCooperativa/{{_id}}" class="btn btn-success" onclick="return habilitar()">
-              Inhabilitar
+            <a href="/enabledRuta/{{_id}}" class="btn btn-success" onclick="return habilitar()">
+              Habilitado
             </a>
             {{else}}
-            <a href="/enabledCooperativa/{{_id}}" class="btn btn-secondary" onclick="return inhabilitar()">
-              Habilitar
+            <a href="/enabledRuta/{{_id}}" class="btn btn-secondary" onclick="return inhabilitar()">
+              Inhabilitado
             </a>
             {{/if}}
           </td>
-          <td><a href="/cooperativaEdit/{{_id}}" class="btn btn-info">Editar</a></td>
+          <td><a href="/RutaEdit/{{_id}}" class="btn btn-info">Editar</a></td>
         </tr>
         
         {{/each}}
