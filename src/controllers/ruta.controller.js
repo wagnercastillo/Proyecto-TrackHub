@@ -1,7 +1,5 @@
 const Ruta = require('../models/Ruta');
-const cloudinary = require('cloudinary');
 
-const fs = require('fs-extra');
 
 export const getRutaPrincipal = async (req, res) => {
    const Rutas = await Ruta.find({}).lean();
@@ -38,9 +36,10 @@ export const createRuta = async (req, res) => {
 //modificar
 export const enabledRuta = async (req, res) => {
    const { id } = req.params;
-   const coop = await Ruta.findById(id);
-   coop.estado = !coop.estado;
-   await coop.save();
+   const rut = await Ruta.findById(id);
+   rut.estado = !rut.estado;
+   await rut.save();
+   console.log(rut);
    res.redirect('/guardarRuta/add')
 }
 
@@ -50,34 +49,34 @@ export const getRutaById = async (req, res) => {
 }
 export const updateRutaById = async (req, res) => {
    const { id } = req.params;
-   const coop = await Ruta.findById(id).lean();
-   res.render('Rutas/frm_editRuta', { coop })
+   const rut = await Ruta.findById(id).lean();
+   res.render('rutas/frm_editRutas', { rut })
 }
 
 export const editarRutaById = async (req, res) => {
    const { origen, destino,precio } = req.body;
    const err = [];
    if (!origen) {
-      err.push({ text: 'Ingrese el origen de la Ruta' });
+      err.push({ text: 'Ingrese el nuevo origen de la Ruta' });
    }
    if (!destino) {
-      err.push({ text: 'Ingrese el destino de la Ruta' });
+      err.push({ text: 'Ingrese el nuevo destino de la Ruta' });
    }
    if (!precio) {
-      err.push({ text: 'Ingrese el precio de la Ruta' });
+      err.push({ text: 'Ingrese el nuevo precio de la Ruta' });
    }
    if (err.length > 0) {
       const { id } = req.params;
       const rut = await Ruta.findById(id).lean();
-      res.render('rutas/ruta', { rut,err},)
+      res.render('rutas/frm_editRutas', { rut,err},)
    } else {
    
-   const Ruta = await Ruta.findByIdAndUpdate(req.params.id, {
+   const ruta = await Ruta.findByIdAndUpdate(req.params.id, {
       origen,
       destino,
       precio
    });
-   console.log(Ruta);
+   console.log(ruta);
    res.redirect('/guardarRuta/add');
 }
 }        
