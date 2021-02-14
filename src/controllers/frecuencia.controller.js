@@ -40,9 +40,9 @@ export const createFrecuencia = async (req, res) => {
 //modificar
 export const enabledFrecuencia = async (req, res) => {
    const { id } = req.params;
-   const frec = await Frecuencia.findById(id);
-   frec.estado = !frec.estado;
-   await frec.save();
+   const frecu = await Frecuencia.findById(id);
+   frecu.estado_frec = !frecu.estado_frec;
+   await frecu.save();
    res.redirect('/guardarFrecuencia/add')
 }
 
@@ -52,38 +52,38 @@ export const getFrecuenciaById = async (req, res) => {
 }
 export const updateFrecuenciaById = async (req, res) => {
    const { id } = req.params;
-   const coop = await Frecuencia.findById(id).lean();
-   res.render('Frecuencias/frm_editFrecuencia', { coop })
+   const frec = await Frecuencia.findById(id).lean();
+   res.render('Frecuencias/frm_editFrecuencia', { frec })
 }
 
 export const editarFrecuenciaById = async (req, res) => {
-   const { nombre, direccion } = req.body;
-   const errors = [];
-   if (!nombre) {
-      errors.push({ text: 'Ingrese el nombre de la Frecuencia' });
+   const { origen, destino, valor_frec, duracion } = req.body;
+   const error = [];
+   if (!origen) {
+      error.push({ text: 'Ingrese el nombre de la Frecuencia' });
    }
-   if (!direccion) {
-      errors.push({ text: 'Ingrese el direccion de la Frecuencia' });
+   if (!destino) {
+      error.push({ text: 'Ingrese el direccion de la Frecuencia' });
    }
-   if (!req.file) {
-      errors.push({ text: 'No ha selecionado el logo de la Frecuencia' });
+   if (!valor_frec) {
+      error.push({ text: 'Ingrese el nombre de la Frecuencia' });
    }
-   if (errors.length > 0) {
+   if (!duracion) {
+      error.push({ text: 'Ingrese el direccion de la Frecuencia' });
+   }
+   if (error.length > 0) {
       const { id } = req.params;
-      const coop = await Frecuencia.findById(id).lean();
-      res.render('Frecuencias/frm_editFrecuencia', { coop, errors },)
+      const frec = await Frecuencia.findById(id).lean();
+      res.render('Frecuencias/frm_editFrecuencia', { frec, error },)
    } else {
 
-      const result = await cloudinary.v2.uploader.upload(req.file.path);
-
-      const Frecuencia = await Frecuencia.findByIdAndUpdate(req.params.id, {
-         nombre,
-         direccion,
-         imageURL: result.url,
-         public_id: result.public_id
-
+      const frecuencia = await Frecuencia.findByIdAndUpdate(req.params.id, {
+         origen,
+         destino,
+         valor_frec,
+         duracion
       });
-      console.log(Frecuencia);
+      console.log(frecuencia);
       res.redirect('/guardarFrecuencia/add');
    }
 } 

@@ -3,35 +3,32 @@
 <nav id="menu" class=" intro navbar navbar-fixed-top">
     <div id="contact" class="text-center" style=" background-color: rgba(59, 59, 59, 0.651);">
         <div class="section-title text-center">
-            <h1>Editar de Cooperativa </h1>
-            <h2>Track Hub al servicio </h2>
-            <h3>Es un Placer Servirle </h3>
+            <h1>Editar Cooperativa </h1>
             <hr>
         </div>
         <div class="col-md-10 col-md-offset-1">
-            {{#each errors}}
+            {{#each error}}
             <div class="alert alert-danger">{{text}}</div>
             {{/each}}
-            <form action="/cooperativaEdit/{{coop._id}}" method="POST" enctype="multipart/form-data">
+            <form action="/frecuenciaEdit/{{frec._id}}" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
-                    <input type="text" name="nombre" class="form-control" value="{{coop.nombre}}">
+                    <label style="color: white;">Origen</label>
+                    <input type="text" name="origen" class="form-control" value="{{frec.origen}}">
+                </div>
+                <div class="form-group" >
+                    <label style="color: white;">Destino</label>
+                    <input type="text" name="destino" class="form-control" value="{{frec.destino}}">
                 </div>
                 <div class="form-group">
-                    <textarea name="direccion" class="form-control"
-                        placeholder="Ingrese direccion Cooperativa ">{{coop.direccion}}</textarea>
+                    <label style="color: white;">Valor</label>
+                    <input type="text" name="valor_frec" class="form-control" value="{{frec.valor_frec}}">
                 </div>
-                <div class="input-group mb-3">
-                    <div class="custom-file">
-                           <label for="inputGroupFile01" class="custom-file-label"> <i class="fas fa-cloud-upload-alt"></i></label>
-                    </div>
+                <div class="form-group">
+                    <label style="color: white;">Duracion</label>
+                    <input type="Number" name="duracion" class="form-control" value="{{frec.duracion}}">
                 </div>
-                <div class="input-group mb-3">
-                    <div class="custom-file">
-                        <input type="file" name="image" class="custom-file-input" id="inputGroupFile01">
-                        <label for="inputGroupFile01" class="custom-file-label"> <i class="fas fa-cloud-upload-alt"></i></label>
-                    </div>
-                </div>
-                <button class="btn tbn-primary" style="background-color: #3092d3; / * * Verde /
+                
+                <button class="btn tbn-primary" style="background-color: #FF5733; / * * Verde /
 border: none;
 color: blanco;
 padding: 1px 32px;

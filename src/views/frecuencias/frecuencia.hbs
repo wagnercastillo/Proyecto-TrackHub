@@ -1,4 +1,8 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <!-- estilos frecuencias-->
+  
   <link rel="stylesheet" href="/estilosfrecuencia/page.css" media="screen">
   
   <script class="u-script" type="text/javascript" src="/estilosfrecuencia/jquery.js" defer=""></script>
@@ -9,10 +13,26 @@
   <link id="u-page-google-font" rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i">
   
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+<script type="text/javascript">
+    function inhabilitar(){
+        var respuesta = confirm("¿Estas seguro que deseas HABILITAR la cooperativa?");
+        if(respuesta == true){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    function habilitar(){
+        var respuesta = confirm("¿Estas seguro que deseas INHABILITAR la cooperativa?");
+        if(respuesta == true){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    </script>
 
 <section class="u-clearfix u-grey-5 u-section-1" id="carousel_b652">
     <div class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-xl u-sheet-1">
@@ -67,7 +87,7 @@
                                                     class="u-border-1 u-border-grey-30 u-input u-input-rectangle">
                                             </div>
 
-                                            <button class="btn tbn-primary" style="background-color: #3092d3; / * * Verde /
+                                            <button class="btn tbn-primary" style="background-color: #FF5733; / * * Verde /
 border: none;
 color: blanco;
 padding: 1px 32px;
@@ -108,18 +128,18 @@ font-size: 16px;"> Guardar</button>
                 <td>{{valor_frec}}</td>
                 <td>{{duracion}}</td>
                 <td>
-                    {{#if estado}}
+                    {{#if estado_frec}}
                     <a href="/enableFrecuencia/{{_id}}" class="btn btn-success" onclick="return habilitar()">
-                        Inhabilitar
+                        Habilitado
                     </a>
                     {{else}}
                     <a href="/enableFrecuencia/{{_id}}" class="btn btn-secondary" onclick="return inhabilitar()">
-                        Habilitar
+                        Inhabilitado
                     </a>
                     {{/if}}
                     
                 </td>
-                <td><a href="/cooperativaEdit/{{_id}}" class="btn btn-info">Editar</a></td>
+                <td><a href="/frecuenciaEdit/{{_id}}" class="btn btn-info">Editar</a></td>
             </tr>
             {{/each}}
         </tbody>
