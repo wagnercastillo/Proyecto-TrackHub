@@ -10,9 +10,7 @@ import {
 
 
 router.get('/guardarRuta/add', rutaControllers.getRutaPrincipal)
-
 router.post('/guardarRuta/add', rutaControllers.createRuta)
-
 router.get('/enabledRuta/:id', rutaControllers.enabledRuta)
 
 router.get('/RutaEdit/:id', rutaControllers.updateRutaById)
