@@ -1,0 +1,46 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<nav id="menu" class=" intro navbar navbar-fixed-top">
+    <div id="contact" class="text-center" style=" background-color: rgba(59, 59, 59, 0.651);">
+        <div class="section-title text-center">
+            <h1>Editar de Cooperativa </h1>
+            <h2>Track Hub al servicio </h2>
+            <h3>Es un Placer Servirle </h3>
+            <hr>
+        </div>
+        <div class="col-md-10 col-md-offset-1">
+            {{#each errors}}
+            <div class="alert alert-danger">{{text}}</div>
+            {{/each}}
+            <form action="/cooperativaEdit/{{coop._id}}" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="text" name="nombre" class="form-control" value="{{coop.nombre}}">
+                </div>
+                <div class="form-group">
+                    <textarea name="direccion" class="form-control"
+                        placeholder="Ingrese direccion Cooperativa ">{{coop.direccion}}</textarea>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="custom-file">
+                           <label for="inputGroupFile01" class="custom-file-label"> <i class="fas fa-cloud-upload-alt"></i></label>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="custom-file">
+                        <input type="file" name="image" class="custom-file-input" id="inputGroupFile01">
+                        <label for="inputGroupFile01" class="custom-file-label"> <i class="fas fa-cloud-upload-alt"></i></label>
+                    </div>
+                </div>
+                <button class="btn tbn-primary" style="background-color: #3092d3; / * * Verde /
+border: none;
+color: blanco;
+padding: 1px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;"> Guardar</button>
+            </form>
+            </col-md-8>
+        </div>
+    </div>
+</nav>

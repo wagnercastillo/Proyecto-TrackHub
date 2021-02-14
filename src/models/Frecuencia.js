@@ -16,7 +16,7 @@ const Frecuencia = new Schema({
         required: true,
         default: true
     },
-    tipo_frec: {
+    valor_frec: {
         type: Boolean,
         required: true
     },

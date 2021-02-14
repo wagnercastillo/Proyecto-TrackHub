@@ -1,43 +1,38 @@
 const Frecuencia = require('../models/Frecuencia');
 
-const cloudinary = require('cloudinary');
-cloudinary.config({
-   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-   api_key: process.env.CLOUDINARY_API_KEY,
-   api_secret: process.env.CLOUDINARY_API_SECRET
-});
 
-const fs = require('fs-extra');
 
 export const getFrecuenciaPrincipal = async (req, res) => {
    const Frecuencias = await Frecuencia.find({}).lean();
    res.render('frecuencias/frecuencia', { Frecuencias });
 }
 export const createFrecuencia = async (req, res) => {
-   const { nombre, direccion } = req.body;
-   const errors = [];
-   if (!nombre) {
-      errors.push({ text: 'Ingrese el nombre de la Frecuencia' });
+   const { origen, destino, valor_frec, duracion } = req.body;
+   const error = [];
+   if (!origen) {
+      error.push({ text: 'Ingrese el nombre de la Frecuencia' });
    }
-   if (!direccion) {
-      errors.push({ text: 'Ingrese el direccion de la Frecuencia' });
+   if (!destino) {
+      error.push({ text: 'Ingrese el direccion de la Frecuencia' });
    }
-   if (!req.file) {
-      errors.push({ text: 'No ha selecionado el logo de la Frecuencia' });
-   }
-   if (errors.length > 0) {
-      const Frecuencias = await Frecuencia.find({}).lean();
-      res.render('Frecuencias/frm_regFrecuencia', { Frecuencias, errors });
+   if (!valor_frec) {
+    error.push({ text: 'Ingrese el direccion de la Frecuencia' });
+ }
+ if (!duracion) {
+    error.push({ text: 'Ingrese el direccion de la Frecuencia' });
+ }
+   if (error.length > 0) {
+      const frecuencias = await Frecuencia.find({}).lean();
+      res.render('frecuencias/frecuencia', { frecuencias, error });
    } else {
-      const result = await cloudinary.v2.uploader.upload(req.file.path);
-      const newCoperativa = new Frecuencia({
-         nombre,
-         direccion,
-         imageURL: result.url,
-         public_id: result.public_id
+      //const result = await cloudinary.v2.uploader.upload(req.file.path);
+      const newFrecuencia = new Frecuencia({
+         origen,
+         destino,
+         valor_frec,
+         duracion
       });
-      await newCoperativa.save();
-      await fs.unlink(req.file.path)
+      await newFrecuencia.save();
       res.redirect('/guardarFrecuencia/add')
    }
 }
@@ -45,9 +40,9 @@ export const createFrecuencia = async (req, res) => {
 //modificar
 export const enabledFrecuencia = async (req, res) => {
    const { id } = req.params;
-   const coop = await Frecuencia.findById(id);
-   coop.estado = !coop.estado;
-   await coop.save();
+   const frec = await Frecuencia.findById(id);
+   frec.estado = !frec.estado;
+   await frec.save();
    res.redirect('/guardarFrecuencia/add')
 }
 
