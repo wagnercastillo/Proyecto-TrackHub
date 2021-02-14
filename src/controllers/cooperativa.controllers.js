@@ -11,29 +11,47 @@ const fs = require('fs-extra');
 
 export const Principal = async (req, res) => {
    const cooperativas = await Cooperativa.find({}).lean();
-   res.render('frm_Principal', { cooperativas });
+   res.render('frm_Principal', {
+      cooperativas
+   });
    console.log(cooperativas)
 }
 
 export const getCooperativaPrincipal = async (req, res) => {
    const cooperativas = await Cooperativa.find({}).lean();
-   res.render('cooperativas/frm_regCooperativa', { cooperativas });
+   res.render('cooperativas/frm_regCooperativa', {
+      cooperativas
+   });
 }
 export const createCooperativa = async (req, res) => {
-   const { nombre, direccion } = req.body;
+
+   console.log('verificacion de repeticion');
+   const {
+      nombre,
+      direccion
+   } = req.body;
    const errors = [];
    if (!nombre) {
-      errors.push({ text: 'Ingrese el nombre de la Cooperativa' });
+      errors.push({
+         text: 'Ingrese el nombre de la Cooperativa'
+      });
    }
    if (!direccion) {
-      errors.push({ text: 'Ingrese el direccion de la Cooperativa' });
+      errors.push({
+         text: 'Ingrese el direccion de la Cooperativa'
+      });
    }
    if (!req.file) {
-      errors.push({ text: 'No ha selecionado el logo de la Cooperativa' });
+      errors.push({
+         text: 'No ha selecionado el logo de la Cooperativa'
+      });
    }
    if (errors.length > 0) {
       const cooperativas = await Cooperativa.find({}).lean();
-      res.render('cooperativas/frm_regCooperativa', { cooperativas, errors });
+      res.render('cooperativas/frm_regCooperativa', {
+         cooperativas,
+         errors
+      });
    } else {
       const result = await cloudinary.v2.uploader.upload(req.file.path);
       const newCoperativa = new Cooperativa({
@@ -50,7 +68,9 @@ export const createCooperativa = async (req, res) => {
 
 //modificar
 export const enabledCooperativa = async (req, res) => {
-   const { id } = req.params;
+   const {
+      id
+   } = req.params;
    const coop = await Cooperativa.findById(id);
    coop.estado = !coop.estado;
    await coop.save();
@@ -59,30 +79,50 @@ export const enabledCooperativa = async (req, res) => {
 
 export const getCooperativaById = async (req, res) => {
    const cooperativa = await Cooperativa.findById(req.params.id);
-   res.render('partials/modificar_cooperativa_formulario', { cooperativa });
+   res.render('partials/modificar_cooperativa_formulario', {
+      cooperativa
+   });
 }
 export const updateCooperativaById = async (req, res) => {
-   const { id } = req.params;
+   const {
+      id
+   } = req.params;
    const coop = await Cooperativa.findById(id).lean();
-   res.render('cooperativas/frm_editCooperativa', { coop })
+   res.render('cooperativas/frm_editCooperativa', {
+      coop
+   })
 }
 
 export const editarCooperativaById = async (req, res) => {
-   const { nombre, direccion } = req.body;
+   const {
+      nombre,
+      direccion
+   } = req.body;
    const errors = [];
    if (!nombre) {
-      errors.push({ text: 'Ingrese el nombre de la Cooperativa' });
+      errors.push({
+         text: 'Ingrese el nombre de la Cooperativa'
+      });
    }
    if (!direccion) {
-      errors.push({ text: 'Ingrese el direccion de la Cooperativa' });
+      errors.push({
+         text: 'Ingrese el direccion de la Cooperativa'
+      });
    }
    if (!req.file) {
-      errors.push({ text: 'No ha selecionado el logo de la Cooperativa' });
+      errors.push({
+         text: 'No ha selecionado el logo de la Cooperativa'
+      });
    }
    if (errors.length > 0) {
-      const { id } = req.params;
+      const {
+         id
+      } = req.params;
       const coop = await Cooperativa.findById(id).lean();
-      res.render('cooperativas/frm_editCooperativa', { coop, errors },)
+      res.render('cooperativas/frm_editCooperativa', {
+         coop,
+         errors
+      }, )
    } else {
 
       const result = await cloudinary.v2.uploader.upload(req.file.path);
@@ -97,4 +137,4 @@ export const editarCooperativaById = async (req, res) => {
       console.log(cooperativa);
       res.redirect('/guardarCooperativa/add');
    }
-}        
+}
