@@ -1,49 +1,36 @@
 const Ruta = require('../models/Ruta');
-
 const cloudinary = require('cloudinary');
-cloudinary.config({
-   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-   api_key: process.env.CLOUDINARY_API_KEY,
-   api_secret: process.env.CLOUDINARY_API_SECRET
-});
 
 const fs = require('fs-extra');
-
-export const Principal = async (req, res) => {
-   const Rutas = await Ruta.find({}).lean();
-   res.render('frm_Principal', { Rutas });
-   console.log(Rutas)
-}
 
 export const getRutaPrincipal = async (req, res) => {
    const Rutas = await Ruta.find({}).lean();
    res.render('rutas/ruta', { Rutas });
 }
 export const createRuta = async (req, res) => {
-   const { nombre, direccion } = req.body;
+   const { origen, destino,precio } = req.body;
    const errors = [];
-   if (!nombre) {
-      errors.push({ text: 'Ingrese el nombre de la Ruta' });
+   if (!origen) {
+      errors.push({ text: 'Ingrese el origen de la Ruta' });
    }
-   if (!direccion) {
-      errors.push({ text: 'Ingrese el direccion de la Ruta' });
+   if (!destino) {
+      errors.push({ text: 'Ingrese el destino de la Ruta' });
    }
-   if (!req.file) {
-      errors.push({ text: 'No ha selecionado el logo de la Ruta' });
+   if (!precio) {
+      errors.push({ text: 'Ingrese el precio de la Ruta' });
    }
    if (errors.length > 0) {
-      const Rutas = await Ruta.find({}).lean();
-      res.render('Rutas/frm_regRuta', { Rutas, errors });
+      const rut = await Ruta.find({}).lean();
+      res.render('/guardarRuta/add', { rut,errors});
    } else {
-      const result = await cloudinary.v2.uploader.upload(req.file.path);
-      const newCoperativa = new Ruta({
-         nombre,
-         direccion,
-         imageURL: result.url,
-         public_id: result.public_id
+      const newRuta = new Ruta({
+         origen,
+         destino,
+         precio
+
       });
-      await newCoperativa.save();
-      await fs.unlink(req.file.path)
+      await newRuta.save();
+      console.log(newRuta);
       res.redirect('/guardarRuta/add')
    }
 }
@@ -68,31 +55,27 @@ export const updateRutaById = async (req, res) => {
 }
 
 export const editarRutaById = async (req, res) => {
-   const { nombre, direccion } = req.body;
-   const errors = [];
-   if (!nombre) {
-      errors.push({ text: 'Ingrese el nombre de la Ruta' });
+   const { origen, destino,precio } = req.body;
+   const err = [];
+   if (!origen) {
+      err.push({ text: 'Ingrese el origen de la Ruta' });
    }
-   if (!direccion) {
-      errors.push({ text: 'Ingrese el direccion de la Ruta' });
+   if (!destino) {
+      err.push({ text: 'Ingrese el destino de la Ruta' });
    }
-   if (!req.file) {
-      errors.push({ text: 'No ha selecionado el logo de la Ruta' });
+   if (!precio) {
+      err.push({ text: 'Ingrese el precio de la Ruta' });
    }
-   if (errors.length > 0) {
+   if (err.length > 0) {
       const { id } = req.params;
-      const coop = await Ruta.findById(id).lean();
-      res.render('Rutas/frm_editRuta', { coop,errors},)
+      const rut = await Ruta.findById(id).lean();
+      res.render('rutas/ruta', { rut,err},)
    } else {
    
-   const result = await cloudinary.v2.uploader.upload(req.file.path);
-
    const Ruta = await Ruta.findByIdAndUpdate(req.params.id, {
-      nombre,
-      direccion,
-      imageURL: result.url,
-      public_id: result.public_id
-
+      origen,
+      destino,
+      precio
    });
    console.log(Ruta);
    res.redirect('/guardarRuta/add');

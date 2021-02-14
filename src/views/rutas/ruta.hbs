@@ -1,55 +1,90 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+
+<!--Controlo de Ingreso dedatos-->
+<script type="text/javascript">
+    function inhabilitar(){
+        var respuesta = confirm("¿Estas seguro que deseas HABILITAR la cooperativa?");
+        if(respuesta == true){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    function habilitar(){
+        var respuesta = confirm("¿Estas seguro que deseas INHABILITAR la cooperativa?");
+        if(respuesta == true){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+</script> 
+
+
+
+
 <section class="u-clearfix u-grey-5 u-section-2" id="carousel_ea87">
-        <div class="u-clearfix u-sheet u-sheet-1">
-          <h2 class="u-text u-text-default u-text-1"></h2>
-          <p class="u-text u-text-default u-text-2"></p>
-          <div class="u-clearfix u-expanded-width u-gutter-20 u-layout-wrap u-layout-wrap-1">
-            <div class="u-layout">
-              <div class="u-layout-col">
-                <div class="u-size-30">
-                  <div class="u-layout-row">
-                    <div class="u-size-30">
-                      <div class="u-layout-col">
-                        <div class="u-container-style u-layout-cell u-left-cell u-layout-cell-2">
-                          <div class="u-container-layout u-container-layout-2">
-                            <h3 class="u-text u-text-4">Registro ruta</h3>
-                            <h6 class="u-text u-text-5">Registre rutas desde el inicio de la frecuencia hasta el final</h6>
-                            <div class="u-form u-form-1">
-                              <form action="#" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 0;" source="custom" name="form">
-                                <div class="u-form-group u-form-name">
-                                  <label for="name-3d90" class="u-label">Origen</label>
-                                  <input type="text" id="name-3d90" name="name" class="u-input u-input-rectangle u-white" required="">
-                                </div>
-                                <div class="u-form-email u-form-group">
-                                  <label for="email-3d90" class="u-label">Destino</label>
-                                  <input type="email" id="email-3d90" name="email" class="u-input u-input-rectangle u-white" required="">
-                                </div>
-                                <div class="u-form-group u-form-group-3">
-                                  <label for="text-9c68" class="u-label">Valor de la ruta</label>
-                                  <input type="text" placeholder="" id="text-9c68" name="text" class="u-input u-input-rectangle u-white">
-                                </div>
-                                <div class="u-align-left u-form-group u-form-submit">
-                                  <a href="#" class="u-border-2 u-border-grey-dark-1 u-btn u-btn-rectangle u-btn-submit u-button-style u-none u-btn-2">Guardar</a>
-                                  <input type="submit" value="submit" class="u-form-control-hidden">
-                                </div>
-                                <div class="u-form-send-message u-form-send-success"> Gracias! Your message has been sent. </div>
-                                <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>
-                                <input type="hidden" value="" name="recaptchaResponse">
-                              </form>
-                            </div>
+  <div class="u-clearfix u-sheet u-sheet-1">
+    <h2 class="u-text u-text-default u-text-1"></h2>
+    <p class="u-text u-text-default u-text-2"></p>
+    <div class="u-clearfix u-expanded-width u-gutter-20 u-layout-wrap u-layout-wrap-1">
+      <div class="u-layout">
+        <div class="u-layout-col">
+          <div class="u-size-30">
+            <div class="u-layout-row">
+              <div class="u-size-30">
+                <div class="u-layout-col">
+                  <div class="u-container-style u-layout-cell u-left-cell u-layout-cell-2">
+                    <div class="u-container-layout u-container-layout-2">
+                      <h3 class="u-text u-text-4">Registro ruta</h3>
+                      <h6 class="u-text u-text-5">Registre rutas desde el inicio de la frecuencia hasta el final</h6>
+                      <div class="u-form u-form-1">
+                        {{#each err}}
+                        <div class="alert alert-danger">{{text}}</div>
+                        {{/each}}
+                        <form action="/guardarRuta/add" method="POST" enctype="multipart/form-data"
+                          class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 0;"
+                          source="custom" name="form">
+                          <div class="u-form-group u-form-name">
+                            <label for="name-3d90" class="u-label">Origen</label>
+                            <input type="text" name="origen" class="u-input u-input-rectangle u-white">
                           </div>
-                        </div>
+                          <div class="u-form-email u-form-group">
+                            <label for="email-3d90" class="u-label">Destino</label>
+                            <input type="text" name="destino" class="u-input u-input-rectangle u-white">
+                          </div>
+                          <div class="u-form-group u-form-group-3">
+                            <label for="text-9c68" class="u-label">Valor de la ruta</label>
+                            <input type="number" name="precio" class="u-input u-input-rectangle u-white">
+                          </div>
+                          <button class="btn tbn-primary" style="background-color: #3092d3; / * * Verde /
+border: none;
+color: blanco;
+padding: 1px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;"> Guardar</button>
+                        </form>
                       </div>
                     </div>
-                    <div class="u-size-30">
-                      <div class="u-layout-col">
-                        <div class="u-container-style u-layout-cell u-right-cell  u-layout-cell-3">
-                          <div class="u-container-layout u-container-layout-3">
-                            <h3 class="u-text u-text-6">Rutas</h3>
-                            <h6 class="u-text u-text-7"></h6>
-                            <img src="/estilosRutas/images/57e0d6424b56a514f6da8c7dda793678153bdee757596c48732f73d3914fcc51bd_1280.jpg" alt="" class="u-expanded-width u-image u-image-default u-image-1" data-image-width="1280" data-image-height="853">
-                          </div>
-                        </div>
-                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="u-size-30">
+                <div class="u-layout-col">
+                  <div class="u-container-style u-layout-cell u-right-cell  u-layout-cell-3">
+                    <div class="u-container-layout u-container-layout-3">
+                      <h3 class="u-text u-text-6">Rutas</h3>
+                      <h6 class="u-text u-text-7"></h6>
+                      <img
+                        src="/estilosRutas/images/57e0d6424b56a514f6da8c7dda793678153bdee757596c48732f73d3914fcc51bd_1280.jpg"
+                        alt="" class="u-expanded-width u-image u-image-default u-image-1" data-image-width="1280"
+                        data-image-height="853">
                     </div>
                   </div>
                 </div>
@@ -57,62 +92,56 @@
             </div>
           </div>
         </div>
-      </section>
-      <!--TABLA DEL REGISTRO DE RUTAS-->
-      <div class="u-align-center u-clearfix u-palette-5-light-2 u-section-3 u-left-cell" id="carousel_6abd">
-      
-      <h3 class="u-text u-text-4" style="margin-bottom: 20px;"> Buscar Rutas </h3>
-      <nav class="navbar navbar-light bg-light">
-        <form class="container-fluid">
-          <div class="input-group">
-            <span class="input-group-text" id="basic-addon1">Buscar</span>
-            <input type="text" class="form-control" placeholder="Origen-Destino" aria-label="Origen-Destino" aria-describedby="basic-addon1">
-          </div>
-        </form>
-      </nav>
-      <container>
-
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Origen</th>
-            <th scope="col">Destino</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Rutas</th>
-            <th scope="col">Modificar</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Loja</td>
-            <td>Quito</td>
-            <td>$20.00</td>
-            <td><input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
-                <label class="btn btn-outline-success" for="btncheck1">Activo</label></td>
-            <td><a href="#"><button type="button" class="u-border-2 u-border-grey-75 btn-secondary btn-sm">editar</button></td></a>
-              
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Loja</td>
-            <td>guayaquil</td>
-            <td>$15.00</td>
-            <td><input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
-                <label class="btn btn-outline-success" for="btncheck2">Activo</label></td>
-            <td><a href="#"><button type="button" class="u-border-2 u-border-grey-75 btn-secondary btn-sm">editar</button></td></a>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Loja</td>
-            <td>Machala</td>
-            <td>$20.00</td>
-            <td><input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
-                <label class="btn btn-outline-success" for="btncheck3">Activo</label></td>
-            <td><a href="#"><button type="button" class="u-border-2 u-border-grey-75 btn-secondary btn-sm">editar</button></td></a>
-          </tr>
-        </tbody>
-      </table>
-    </container>
+      </div>
     </div>
+  </div>
+</section>
+<!--TABLA DEL REGISTRO DE RUTAS-->
+<div class="u-align-center u-clearfix u-palette-5-light-2 u-section-3 u-left-cell" id="carousel_6abd">
+  <h3 class="u-text u-text-4" style="margin-bottom: 20px;"> Tabla de Rutas </h3>
+  <nav class="navbar navbar-light bg-light">
+    <form class="container-fluid">
+      <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">Buscar</span>
+        <input type="text" class="form-control" placeholder="Origen-Destino" aria-label="Origen-Destino"
+          aria-describedby="basic-addon1">
+      </div>
+    </form>
+  </nav>
+  <container>
+
+    <table class="table text-center">
+      <thead>
+        <tr>
+          <th scope="col" style="text-align: center;">Origen</th>
+          <th scope="col"style="text-align: center;">Destino</th>
+          <th scope="col"style="text-align: center;">Precio</th>
+          <th scope="col"style="text-align: center;">Rutas</th>
+          <th scope="col"style="text-align: center;">Modificar</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each Rutas}}
+        <tr>
+          <td>{{origen}}</td>
+          <td>{{destino}}</td>
+          <td>{{precio}}</td>
+          <td>
+            {{#if estado}}
+            <a href="/enabledCooperativa/{{_id}}" class="btn btn-success" onclick="return habilitar()">
+              Inhabilitar
+            </a>
+            {{else}}
+            <a href="/enabledCooperativa/{{_id}}" class="btn btn-secondary" onclick="return inhabilitar()">
+              Habilitar
+            </a>
+            {{/if}}
+          </td>
+          <td><a href="/cooperativaEdit/{{_id}}" class="btn btn-info">Editar</a></td>
+        </tr>
+        
+        {{/each}}
+      </tbody>
+    </table>
+  </container>
+</div>
