@@ -17,4 +17,6 @@ router.get('/enabledUnidades/:id', unidadesControllers.enabledUnidades)
 
 router.get('/editarUnidades/:id', unidadesControllers.updateUnidadesById)
 
+router.post('/editarUnidades/:id', unidadesControllers.editarUnidadById)
+
 module.exports = router;

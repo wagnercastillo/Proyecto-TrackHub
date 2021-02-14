@@ -1,0 +1,45 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<nav id="menu" class=" intro navbar navbar-fixed-top">
+    <div id="contact" class="text-center" style=" background-color: rgba(59, 59, 59, 0.651);">
+        <div class="section-title text-center">
+            <h1>Editar de Cooperativa </h1>
+            <h2>Track Hub al servicio </h2>
+            <h3>Es un Placer Servirle </h3>
+            <hr>
+        </div>
+        <div class="col-md-10 col-md-offset-1">
+            {{#each rr}}
+            <div class="alert alert-danger">{{text}}</div>
+            {{/each}}
+            <form action="/editarUnidades/{{unid._id}}" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label style="color:white"> Placa</label>
+                    <input type="text" name="placa" class="form-control" value="{{unid.placa}}">
+                </div>
+                 <div class="form-group">
+                     <label style="color:white"> Marca</label>
+                    <input type="text" name="marca" class="form-control" value="{{unid.marca}}">
+                </div>
+                 <div class="form-group">
+                     <label style="color:white"> Modelo</label>
+                    <input type="text" name="modelo" class="form-control" value="{{unid.modelo}}">
+                </div>
+                 <div class="form-group">
+                     <label style="color:white"> Capacidad</label>
+                    <input type="Number" name="capacidad" class="form-control" value="{{unid.capacidad}}">
+                </div>
+                
+               <button class="btn tbn-primary" style="background-color: #FF5733; / * * Verde /
+border: none;
+color: blanco;
+padding: 1px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;"> Guardar</button>
+            </form>
+            </col-md-8>
+        </div>
+    </div>
+</nav>

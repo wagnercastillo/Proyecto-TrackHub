@@ -68,67 +68,77 @@ const Unidad = require('../models/Unidad');
          const unidades = await Unidad.findById(id);
          unidades.estado = !unidades.estado;
          await unidades.save();
-         res.redirect('/guardarCooperativa/add')
+         res.redirect('/guardarUnidades/add')
       }
 
       export const getUnidadById = async (req, res) => {
          const unidades = await Unidad.findById(req.params.id);
-         res.render('partials/modificar_cooperativa_formulario', {
-            cooperativa
+         res.render('Unidad/editUnidad', {
+            unidades
          });
       }
       export const updateUnidadesById = async (req, res) => {
          const {
             id
          } = req.params;
-         const coop = await Cooperativa.findById(id).lean();
-         res.render('cooperativas/frm_editCooperativa', {
-            coop
+         const unid = await Unidad.findById(id).lean();
+         res.render('Unidad/editUnidad', {
+            unid
          })
       }
 
       export const editarUnidadById = async (req, res) => {
          const {
-            nombre,
-            direccion
+            placa, 
+            marca,
+            modelo,
+            capacidad,
+           
          } = req.body;
-         const errors = [];
-         if (!nombre) {
+         const rr = [];
+         if (!placa) {
             rr.push({
-               text: 'Ingrese el nombre de la Cooperativa'
+               text: 'Ingrese el nombre de la placa'
             });
          }
-         if (!direccion) {
+         if (!marca) {
             rr.push({
-               text: 'Ingrese el direccion de la Cooperativa'
+               text: 'Ingrese el nombre de la marca'
             });
          }
-         if (!req.file) {
-            errors.push({
-               text: 'No ha selecionado el logo de la Cooperativa'
+         if (!modelo) {
+            rr.push({
+               text: 'Ingrese del nombre del modelo'
             });
          }
-         if (errors.length > 0) {
+         if (!capacidad) {
+            rr.push({
+               text: 'Ingrese la capacidad de la unidad'
+            });
+         }
+        
+         if (rr.length > 0) {
             const {
                id
             } = req.params;
-            const coop = await Cooperativa.findById(id).lean();
-            res.render('cooperativas/frm_editCooperativa', {
-               coop,
-               errors
+            const unid = await  Unidad.findById(id).lean();
+            res.render('Unidad/editUnidad', {
+               unid,
+               rr
             }, )
          } else {
 
-            const result = await cloudinary.v2.uploader.upload(req.file.path);
+            
 
-            const cooperativa = await Cooperativa.findByIdAndUpdate(req.params.id, {
-               nombre,
-               direccion,
-               imageURL: result.url,
-               public_id: result.public_id
+            const unidades = await Unidad.findByIdAndUpdate(req.params.id, {
+               placa,
+               marca,
+               modelo,
+               capacidad
+               
 
             });
-            console.log(cooperativa);
-            res.redirect('/guardarCooperativa/add');
+            console.log(unidades);
+            res.redirect('/guardarUnidades/add');
          }
       }

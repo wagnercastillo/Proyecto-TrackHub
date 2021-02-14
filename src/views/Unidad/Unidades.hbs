@@ -1,17 +1,22 @@
-<!--
 <link rel="stylesheet" href="/estilosUnidad/page.css" media="screen">
-
-<script class="u-script" type="text/javascript" src="/estilosUnidad/jquery.js" defer=""></script>
-
 
 <link id="u-theme-google-font" rel="stylesheet"
   href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
 <link id="u-page-google-font" rel="stylesheet"
   href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i|verdana">
 
-  href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i|verdana">
 
--->
+
+
+
+<!--
+    href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i|verdana">
+    <script class="u-script" type="text/javascript" src="/estilosUnidad/jquery.js" defer=""></script>
+  -->
+
+
+
+
 
 <script type="text/javascript">
   function inhabilitar() {
@@ -118,14 +123,12 @@ font-size: 14px;"> Guardar</button>
         </div>
       </div>
     </div>
-    <p class="u-text u-text-default u-text-2">Image from <a href=""
-        class="u-border-1 u-border-white u-btn u-button-style u-none u-text-body-alt-color u-btn-2">Freepik</a>
-    </p>
+   
   </div>
 </section>
 
 <div class="u-align-center u-clearfix u-palette-5-light-2 u-section-3 u-left-cell" id="carousel_6abd">
-  <h3 class="u-text u-text-4" style="margin-bottom: 20px;"> Tabla de Rutas </h3>
+  <h3 class="u-text u-text-4" style="margin-bottom: 20px;"> Tabla de Unidades </h3>
   <nav class="navbar navbar-light bg-light">
     <form class="container-fluid">
       <div class="input-group">
@@ -140,38 +143,36 @@ font-size: 14px;"> Guardar</button>
     <table class="table text-center">
       <thead>
         <tr>
-          <th scope="col" style="text-align: center;">Origen</th>
-          <th scope="col"style="text-align: center;">Destino</th>
-          <th scope="col"style="text-align: center;">Precio</th>
-          <th scope="col"style="text-align: center;">Rutas</th>
-          <th scope="col"style="text-align: center;">Modificar</th>
+          <th scope="col" style="text-align: center;">Placa</th>
+          <th scope="col" style="text-align: center;">Marca</th>
+          <th scope="col" style="text-align: center;">Modelo</th>
+          <th scope="col" style="text-align: center;">Capacidad</th>
+          <th scope="col" style="text-align: center;">Modificar</th>
         </tr>
       </thead>
       <tbody>
-        {{#each Rutas}}
+        {{#each unidades}}
         <tr>
-          <td>{{origen}}</td>
-          <td>{{destino}}</td>
-          <td>{{precio}}</td>
+          <td>{{placa}}</td>
+          <td>{{marca}}</td>
+          <td>{{modelo}}</td>
+          <td>{{capacidad}}</td>
           <td>
             {{#if estado}}
-            <a href="/enabledCooperativa/{{_id}}" class="btn btn-success" onclick="return habilitar()">
-              Inhabilitar
+            <a href="/enabledUnidades/{{_id}}" class="btn btn-success" onclick="return habilitar()">
+             Habilitar
             </a>
             {{else}}
-            <a href="/enabledCooperativa/{{_id}}" class="btn btn-secondary" onclick="return inhabilitar()">
-              Habilitar
+            <a href="/enabledUnidades/{{_id}}" class="btn btn-secondary" onclick="return inhabilitar()">
+               Inhabilitar
             </a>
             {{/if}}
           </td>
-          <td><a href="/cooperativaEdit/{{_id}}" class="btn btn-info">Editar</a></td>
+          <td><a href="/editarUnidades/{{_id}}" class="btn btn-info">Editar</a></td>
         </tr>
-        
+
         {{/each}}
       </tbody>
     </table>
   </container>
-    </div>
-
-
-     
+</div>
