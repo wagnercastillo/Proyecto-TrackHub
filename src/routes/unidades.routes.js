@@ -8,7 +8,6 @@ import {
     verifyToken
 } from '../middlewars'
 
-
 router.get('/guardarUnidades/add', unidadesControllers.getUnidadPrincipal)
 
 router.post('/guardarUnidades/add', unidadesControllers.createdUnidades)
