@@ -1,10 +1,14 @@
 const Frecuencia = require('../models/Frecuencia');
+const Ruta = require('../models/Ruta');
 
-
+export const Principal = async (req, res) => {
+   res.render('HomeAdministradores');
+}
 
 export const getFrecuenciaPrincipal = async (req, res) => {
    const Frecuencias = await Frecuencia.find({}).lean();
-   res.render('frecuencias/frecuencia', { Frecuencias });
+   const Rutas = await Ruta.find({}).lean();
+   res.render('frecuencias/frecuencia', { Frecuencias, Rutas });
 }
 export const createFrecuencia = async (req, res) => {
    const { origen, destino, valor_frec, duracion } = req.body;
@@ -16,11 +20,11 @@ export const createFrecuencia = async (req, res) => {
       error.push({ text: 'Ingrese el direccion de la Frecuencia' });
    }
    if (!valor_frec) {
-    error.push({ text: 'Ingrese el direccion de la Frecuencia' });
- }
- if (!duracion) {
-    error.push({ text: 'Ingrese el direccion de la Frecuencia' });
- }
+      error.push({ text: 'Ingrese el direccion de la Frecuencia' });
+   }
+   if (!duracion) {
+      error.push({ text: 'Ingrese el direccion de la Frecuencia' });
+   }
    if (error.length > 0) {
       const frecuencias = await Frecuencia.find({}).lean();
       res.render('frecuencias/frecuencia', { frecuencias, error });
@@ -86,4 +90,16 @@ export const editarFrecuenciaById = async (req, res) => {
       console.log(frecuencia);
       res.redirect('/guardarFrecuencia/add');
    }
-} 
+}
+
+
+export const asignarRutas = async (req, res) => {
+   const { _id } = req.params;
+   const { ruta } = req.body;
+   const frecUpdate = await Frecuencia.findByIdAndUpdate(_id, {
+      $push: {
+         ruta
+      }
+   });
+   res.send('${frecUpdate.origen} update');
+}

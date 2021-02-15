@@ -2,37 +2,37 @@
     integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <!-- estilos frecuencias-->
-  
-  <link rel="stylesheet" href="/estilosfrecuencia/page.css" media="screen">
-  
-  <script class="u-script" type="text/javascript" src="/estilosfrecuencia/jquery.js" defer=""></script>
-  
 
-  <link id="u-theme-google-font" rel="stylesheet"
+<link rel="stylesheet" href="/estilosfrecuencia/page.css" media="screen">
+
+<script class="u-script" type="text/javascript" src="/estilosfrecuencia/jquery.js" defer=""></script>
+
+
+<link id="u-theme-google-font" rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
-  <link id="u-page-google-font" rel="stylesheet"
+<link id="u-page-google-font" rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i">
-  
+
 <script type="text/javascript">
-    function inhabilitar(){
+    function inhabilitar() {
         var respuesta = confirm("¿Estas seguro que deseas HABILITAR la cooperativa?");
-        if(respuesta == true){
+        if (respuesta == true) {
             return true;
         }
-        else{
+        else {
             return false;
         }
     }
-    function habilitar(){
+    function habilitar() {
         var respuesta = confirm("¿Estas seguro que deseas INHABILITAR la cooperativa?");
-        if(respuesta == true){
+        if (respuesta == true) {
             return true;
         }
-        else{
+        else {
             return false;
         }
     }
-    </script>
+</script>
 
 <section class="u-clearfix u-grey-5 u-section-1" id="carousel_b652">
     <div class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-xl u-sheet-1">
@@ -45,7 +45,8 @@
                                 <div class="container">
                                     <div class="row align-items-center">
                                         <img src="/estilosfrecuencia/images/54e3dd474f5ab108f5d084609629317e113fdce15b4c704f75277cd2954acd5d_1280.jpg"
-                                        alt="" class="u-image u-image-default u-image-1"  style="margin-top: 50px; height: 500px;">
+                                            alt="" class="u-image u-image-default u-image-1"
+                                            style="margin-top: 50px; height: 500px;">
                                     </div>
                                 </div>
                             </div>
@@ -53,7 +54,8 @@
                     </div>
                     <div class="u-size-30">
                         <div class="u-layout-col">
-                            <div class="u-container-style u-layout-cell u-right-cell u-size-60 u-layout-cell-2" style="margin-left: 60px;">
+                            <div class="u-container-style u-layout-cell u-right-cell u-size-60 u-layout-cell-2"
+                                style="margin-left: 60px;">
                                 <div class="u-container-layout u-container-layout-2" style="margin-bottom: 50px">
                                     <h3 class="u-text u-text-1" style="margin-top: 50px;">REGISTRO FRECUENCIA</h3>
                                     <p class="u-text u-text-2">Recuerde no debe existir varias frecuencias con el mismo
@@ -62,7 +64,7 @@
                                         {{#each error}}
                                         <div class="alert alert-danger">{{text}}</div>
                                         {{/each}}
-                                        
+
                                         <form action="/guardarfrecuencia/add" method="POST"
                                             class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
                                             style="padding: 0;" enctype="multipart/form-data">
@@ -108,7 +110,7 @@ font-size: 16px;"> Guardar</button>
 </section>
 
 <container>
-<h3 class="u-text u-text-1 text-center" style="margin-top: 50px;">TABLA DE FRECUENCIA</h3>
+    <h3 class="u-text u-text-1 text-center" style="margin-top: 50px;">TABLA DE FRECUENCIA</h3>
     <table class="table">
         <thead>
             <tr>
@@ -118,6 +120,7 @@ font-size: 16px;"> Guardar</button>
                 <th scope="col">Duracion</th>
                 <th scope="col">Rutas</th>
                 <th scope="col">Modificar</th>
+                <th scope="col">Rutas</th>
             </tr>
         </thead>
         <tbody>
@@ -137,11 +140,39 @@ font-size: 16px;"> Guardar</button>
                         Inhabilitado
                     </a>
                     {{/if}}
-                    
+
                 </td>
                 <td><a href="/frecuenciaEdit/{{_id}}" class="btn btn-info">Editar</a></td>
+                <td><a href="/frecuencia/rutas/{{_id}}" class="btn btn-info" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop">Rutas</a></td>
+
             </tr>
             {{/each}}
         </tbody>
     </table>
 </container>
+
+<div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Rutas registradas</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                
+                        {{#each Rutas}}
+                        <a class="btn btn-secondary">
+                        {{origen}}-{{destino}}
+                    </a>
+                        {{/each}}
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>

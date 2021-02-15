@@ -2,35 +2,31 @@ import {
     Schema,
     model
 } from 'mongoose'
-const Frecuencia = new Schema({
-    origen: {
+const Chofer = new Schema({
+    nombre: {
         type: String,
         required: true
     },
-    destino: {
+    direccion: {
         type: String,
         required: true
     },
-    estado_frec: {
+    estado: {
         type: Boolean,
         required: true,
         default: true
     },
-    valor_frec: {
-        type: Boolean,
+    imageURL: {
+        type: String,
         required: true
     },
-    duracion: {
-        type: Number,
+    public_id: {
+        type: String,
         required: true
-    },
-    rutas: [{
-        type: Schema.Types.ObjectId,
-        ref: 'rutas'
-    }]
+    }
 }, {
     timestamps: true,
     versionKey: false
 });
 
-module.exports = model('Frecuencia', Frecuencia);
+module.exports = model('Chofer', Chofer);
