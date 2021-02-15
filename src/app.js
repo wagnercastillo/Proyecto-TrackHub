@@ -6,7 +6,6 @@ const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const session = require('express-session')
 const bcrypt = require('bcryptjs');
-
 import {createRoles} from './libs/inicioSetup'
 
 //Inicializations
@@ -47,13 +46,13 @@ const storage = multer.diskStorage({
 })
 
 app.use(multer({storage}).single('image'));
- 
 //Routes
 app.use(require('./routes/frecuencia.routes'));
 app.use(require('./routes/cooperativa.routes'));
 app.use(require('./routes/auth.routes'));
 app.use(require('./routes/unidades.routes'));
 app.use(require('./routes/ruta.routes'));
+app.use(require('./routes/turno.routes'));
 //app.use('/api/auth', authRuta)
 
 module.exports=app;

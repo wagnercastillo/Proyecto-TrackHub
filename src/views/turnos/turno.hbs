@@ -1,0 +1,168 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<!--Controlo de Ingreso de datos(Habilitar-Inhabilitar)-->
+<script type="text/javascript">
+    function inhabilitar() {
+        var respuesta = confirm("¿Estas seguro que deseas HABILITAR la cooperativa?");
+        if (respuesta == true) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    function habilitar() {
+        var respuesta = confirm("¿Estas seguro que deseas INHABILITAR la cooperativa?");
+        if (respuesta == true) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+</script>
+<!---LOCALIZACION DEL FORMULARIO-->
+<section class="u-clearfix u-grey-5 u-section-2" id="carousel_ea87">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <h2 class="u-text u-text-default u-text-1"></h2>
+        <p class="u-text u-text-default u-text-2"></p>
+        <div class="u-clearfix u-expanded-width u-gutter-20 u-layout-wrap u-layout-wrap-1">
+            <div class="u-layout">
+                <div class="u-layout-col">
+                    <div class="u-size-30">
+                        <div class="u-layout-row">
+                            <div class="u-size-30">
+                                <div class="u-layout-col">
+                                    <div class="u-container-style u-layout-cell u-left-cell u-layout-cell-2">
+                                        <div class="u-container-layout u-container-layout-2">
+                                            <h3 class="u-text u-text-4">Registro de Turnos</h3>
+                                            <h6 class="u-text u-text-5">Registro Turnos con una unica Frecuencia</h6>
+                                            <div class="u-form u-form-1">
+                                                {{#each err}}
+                                                <div class="alert alert-danger">{{text}}</div>
+                                                {{/each}}
+                                                <img src="/estilosRutas/images/57e0d6424b56a514f6da8c7dda793678153bdee757596c48732f73d3914fcc51bd_1280.jpg"
+                                                alt="" class="u-expanded-width u-image u-image-default u-image-1"
+                                                data-image-width="1280" data-image-height="853">
+                                                <form action="/guardarTurno/add" method="POST"
+                                                    enctype="multipart/form-data"
+                                                    class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
+                                                    style="padding: 0;" source="custom" name="form">
+                                                    <div class="u-form-group u-form-name">
+                                                        <label for="name-3d90" class="u-label">Hora</label>
+                                                        <input type="Number" name="hora"
+                                                            class="u-input u-input-rectangle u-white">
+                                                    </div>
+                                                    <div class="u-form-email u-form-group">
+                                                        <label for="email-3d90" class="u-label">Minuto</label>
+                                                        <input type="Number" name="minuto"
+                                                            class="u-input u-input-rectangle u-white">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="small mb-1" for="inputEmailAddress">Seleccionar
+                                                            frequencia</label>
+                                                        <!-- Button trigger modal -->
+                                                        <div class="u-text u-text-2">
+                                                            <button type="button"
+                                                                class="u-border-2 u-border-grey-75 u-btn u-btn-round u-none  u-btn-1 "
+                                                                data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                                                Elegir Frecuencia
+                                                            </button>
+                                                        </div>
+                                                        <!-- Modal--->
+                                                        <!-- Button trigger modal -->
+                                                        <label class="small mb-1" for="inputEmailAddress">Seleccionar
+                                                            Unidad </label>
+                                                        <div class="u-text u-text-2">
+                                                            <button type="button"
+                                                                class="u-border-2 u-border-grey-75 u-btn u-btn-round u-none  u-btn-1 "
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#staticBackdrop1">
+                                                                Elegir unidad
+                                                            </button>
+                                                        </div>
+                                                        <button class="btn tbn-primary" style="background-color: #c76414; / * * Verde /
+border: none;
+color: blanco;
+padding: 1px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;"> Guardar</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="u-size-30">
+                                <div class="u-layout-col">
+                                    <div class="u-container-style u-layout-cell u-right-cell  u-layout-cell-3">
+                                        <div class="u-container-layout u-container-layout-3">
+                                            <h3 class="u-text u-text-6">Turnos</h3>
+                                            <h6 class="u-text u-text-7"></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Localizacion de la tabla de Turnos-->
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid">
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Registro</li>
+            </ol>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table mr-1"></i>
+                    Lista de Turnos
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Frecuencia</th>
+                                    <th>Hora</th>
+                                    <th>Unidad</th>
+                                    <th>Turnos</th>
+                                    <th>Modificar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each Turnos}}
+                                <tr>
+                                    <td>Loja-Cuenca</td>
+                                    <td>{{hora}}:{{minuto}}</td>
+                                    <td>Hino Mavesa GD</td>
+                                    <td>
+                                        {{#if estado}}
+                                        <a href="/enabledTurno/{{_id}}" class="btn btn-success"
+                                            onclick="return habilitar()">
+                                            Habilitado
+                                        </a>
+                                        {{else}}
+                                        <a href="/enabledTurno/{{_id}}" class="btn btn-secondary"
+                                            onclick="return inhabilitar()">
+                                            Inhabilitado
+                                        </a>
+                                        {{/if}}
+                                    </td>
+                                    <td><a href="/TurnoEdit/{{_id}}" class="btn btn-info">Editar</a></td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
