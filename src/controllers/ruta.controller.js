@@ -79,4 +79,4 @@ export const editarRutaById = async (req, res) => {
    console.log(ruta);
    res.redirect('/guardarRuta/add');
 }
-}        
+}

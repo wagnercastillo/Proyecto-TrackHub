@@ -19,6 +19,7 @@ const Ruta = new Schema({
         type: Boolean,
         required: true,
         default: true
+    
     }}, {
         timestamps: true,
         versionKey: false
