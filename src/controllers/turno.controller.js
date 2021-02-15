@@ -35,7 +35,6 @@ export const createTurno = async (req, res) => {
          minuto,
       });
       await newTurno.save();
-      await fs.unlink(req.file.path)
       res.redirect('/guardarTurno/add')
    }
 }
