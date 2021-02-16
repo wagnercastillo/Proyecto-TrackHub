@@ -16,6 +16,8 @@ router.get('/cooperativaEdit/:id', cooperativaControllers.updateCooperativaById)
 
 router.post('/cooperativaEdit/:id',cooperativaControllers.editarCooperativaById)
 
+router.get('/obtenerId/:id', cooperativaControllers.obtenerID)
+
 router.get('/test', [authJwt.verifyToken, authJwt.isAdministradorCooperativo],  function(req, res){
     console.log('tienes acceso');
 })

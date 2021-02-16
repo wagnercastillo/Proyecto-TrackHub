@@ -51,11 +51,13 @@ export const getCooperativaPrincipal = async (req, res) => {
 export const createCooperativa = async (req, res) => {
 
    console.log('verificacion de repeticion');
-   const {
-      nombre,
-      direccion
-   } = req.body;
+   const { nombre, direccion, externalIDP , cedula} = req.body;
    const errors = [];
+   if (!cedula) {
+      errors.push({
+         text: 'Selecione un Usuario'
+      });
+   }
    if (!nombre) {
       errors.push({
          text: 'Ingrese el nombre de la Cooperativa'
@@ -73,10 +75,9 @@ export const createCooperativa = async (req, res) => {
    }
    if (errors.length > 0) {
       const cooperativas = await Cooperativa.find({}).lean();
-      res.render('cooperativas/frm_regCooperativa', {
-         cooperativas,
-         errors
-      });
+      const usuarios = await Usuario.find({}).lean();
+      res.render('cooperativas/frm_regCooperativa', { cooperativas, usuarios });
+
    } else {
       const result = await cloudinary.v2.uploader.upload(req.file.path);
       const newCoperativa = new Cooperativa({
@@ -85,7 +86,14 @@ export const createCooperativa = async (req, res) => {
          imageURL: result.url,
          public_id: result.public_id
       });
-      await newCoperativa.save();
+
+      const user = await Usuario.findOne({ cedula: cedula});
+      console.log(user)
+      newCoperativa.externalIDP = [user._id];
+
+      console.log('//////////////////////////')
+      
+      await newCoperativa.save();  
       await fs.unlink(req.file.path)
       res.redirect('/guardarCooperativa/add')
    }
@@ -116,6 +124,14 @@ export const updateCooperativaById = async (req, res) => {
    res.render('cooperativas/frm_editCooperativa', {
       coop
    })
+}
+export const obtenerID = async (req, res) => {
+   const {
+      id
+   } = req.params;
+   const usu = await Usuario.findById(id).lean();
+   const cooperativas = await Cooperativa.find({}).lean();
+   res.render('cooperativas/frm_regCooperativa', { usu, cooperativas});
 }
 
 export const editarCooperativaById = async (req, res) => {
