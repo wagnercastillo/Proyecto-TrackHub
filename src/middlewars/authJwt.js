@@ -76,7 +76,7 @@ export const isAdministradorCooperativo = async (req, res, next) => {
       return res.status(500).send({ message: error });
     }
   };
-
+  
   export const cerrarSesion = async (req, res, next) => {
     let token = req.session.destroy();
     res.redirect('/');

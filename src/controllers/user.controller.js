@@ -4,6 +4,11 @@ import config from '../config'
 import Rol from '../models/Rol';
 import { json } from 'express';
 
+export const inicioAdmin = async (req, res) => {
+    const sms = req.flash('errors');
+    res.render('AdminGeneral/AdminGeneral', sms);
+}
+
 export const registroAdmin = async (req, res) => {
     const sms = req.flash('errors');
     res.render('users/signupAdm', sms);
@@ -56,5 +61,4 @@ export const singinAdm = async (req, res) => {
         req.session.save();
         res.redirect('/');
     }
-
 };

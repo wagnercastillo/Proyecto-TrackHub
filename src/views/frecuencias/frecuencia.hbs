@@ -88,6 +88,12 @@
                                                 <input type="Number" name="duracion"
                                                     class="u-border-1 u-border-grey-30 u-input u-input-rectangle">
                                             </div>
+                                            <div class="u-form-group u-form-group-3">
+                                                <label class="u-label">Duracion frecuencia</label>
+                                                <a href="/frecuencia/rutas/{{_id}}" class="btn btn-info"
+                                                    data-bs-toggle="modal" data-bs-target="#staticBackdrop">Rutas</a>
+                                            </div>
+
 
                                             <button class="btn tbn-primary" style="background-color: #FF5733; / * * Verde /
 border: none;
@@ -161,12 +167,12 @@ font-size: 16px;"> Guardar</button>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                    <form>
-                        {{#each Rutas}}
-                        <a class="btn btn-secondary">
+                <form>
+                    {{#each Rutas}}
+                    <a class="btn btn-secondary">
                         {{origen}}-{{destino}}
                     </a>
-                        {{/each}}
+                    {{/each}}
                 </form>
             </div>
             <div class="modal-footer">

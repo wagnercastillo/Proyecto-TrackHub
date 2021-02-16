@@ -1,5 +1,6 @@
 const Frecuencia = require('../models/Frecuencia');
 const Ruta = require('../models/Ruta');
+import Usuario from '../models/User'
 
 export const Principal = async (req, res) => {
    res.render('HomeAdministradores');
@@ -18,6 +19,14 @@ export const getFrecuenciaPrincipal = async (req, res) => {
    const Rutas = await Ruta.find({}).lean();
    res.render('frecuencias/frecuencia', { Frecuencias, Rutas });
 }
+
+export const getConfiguracion = async (req, res) => {
+
+   const usu = req.session.usuActivo;
+   res.render('Usuario/Configuracion',{usu})
+
+}
+
 export const createFrecuencia = async (req, res) => {
    const { origen, destino, valor_frec, duracion } = req.body;
    const error = [];
@@ -110,4 +119,11 @@ export const asignarRutas = async (req, res) => {
       }
    });
    res.send('${frecUpdate.origen} update');
+}
+
+export const getDatos = async (req, res) => {
+
+   const usu = req.session.usuActivo;
+   res.render('frecuencias/Configuracion',{usu})
+
 }
