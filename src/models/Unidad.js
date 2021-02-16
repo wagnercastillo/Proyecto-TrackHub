@@ -23,6 +23,10 @@ const Unidad = new Schema({
         type: Boolean,
         required: true,
         default: true
+    },
+    correoChofer: {
+        type: String,
+        required: true,
     }
 }, {
     timestamps: true,

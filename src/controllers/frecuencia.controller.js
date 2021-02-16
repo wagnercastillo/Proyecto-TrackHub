@@ -79,7 +79,8 @@ export const getFrecuenciaById = async (req, res) => {
 export const updateFrecuenciaById = async (req, res) => {
    const { id } = req.params;
    const frec = await Frecuencia.findById(id).lean();
-   res.render('Frecuencias/frm_editFrecuencia', { frec })
+   const Rutas = await Ruta.find({}).lean();
+   res.render('Frecuencias/frm_editFrecuencia', { frec , Rutas})
 }
 
 export const editarFrecuenciaById = async (req, res) => {
@@ -107,7 +108,8 @@ export const editarFrecuenciaById = async (req, res) => {
          origen,
          destino,
          valor_frec,
-         duracion
+         duracion,
+         rutas
       });
       console.log(frecuencia);
       res.redirect('/guardarFrecuencia/add');
@@ -117,9 +119,8 @@ export const editarFrecuenciaById = async (req, res) => {
 
 
 export const asignarRutas = async (req, res) => {
-   const ruta = await Ruta.findById(req.params.id);
+   const ruta = await Ruta.findById(req.params.id); 
    rutas.push(ruta);
-   console.log(rutas)
 }
 
 export const rutasAsignadas = async (req, res) => {

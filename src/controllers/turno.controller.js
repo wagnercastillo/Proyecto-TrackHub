@@ -1,10 +1,14 @@
 const Turno = require('../models/Turno');
 const fs = require('fs-extra');
+const Frecuencias = require('../models/Frecuencia');
+const Unidad = require('../models/Unidad');
 
 export const getTurnoPrincipal = async (req, res) => {
    const Turnos = await Turno.find({}).lean();
+   const Frecuencia = await Frecuencias.find({}).lean();
+   const unidad = await Unidad.find({}).lean();
    res.render('turnos/turno', {
-      Turnos
+      Turnos, Frecuencia, unidad
    });
 }
 export const createTurno = async (req, res) => {
@@ -99,3 +103,4 @@ export const editarTurnoById = async (req, res) => {
       res.redirect('/guardarTurno/add')
    }
 }
+
