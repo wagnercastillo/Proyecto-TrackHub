@@ -116,7 +116,7 @@
   <section class="u-align-center u-clearfix u-section-1" id="sec-4b9c">
     <div class="u-clearfix u-sheet u-sheet-1">
       <div alt="" class="u-image u-image-circle u-image-1" data-image-width="722" data-image-height="752"></div>
-      <h2 class="u-text u-text-1">Bienvenido Wagner Castillo</h2>
+      <h2 class="u-text u-text-1">Bienvenido {{usu.nombre}} {{usu.apellido}} </h2>
       <p class="u-text u-text-2">Verifica tus datos.</p>
     </div>
   </section>
@@ -139,9 +139,10 @@
           <div class="u-container-style u-tab-active u-tab-pane u-white u-tab-pane-1" id="tab-0da5" role="tabpanel"
             aria-labelledby="link-tab-0da5">
             <div class="u-container-layout u-container-layout-1">
-              <h5 class="u-text u-text-1">Wagner Castillo</h5>
+              <h5 class="u-text u-text-1">{{usu.nombre}} {{usu.apellido}}</h5>
               <p class="u-text u-text-2">Gestiona tu informacion.</p>
               <div class="u-table u-table-responsive u-table-1">
+
                 <table class="u-table-entity">
                   <colgroup>
                     <col width="50%">
@@ -152,28 +153,24 @@
                       <td
                         class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell u-table-cell-1">
                         Nombre:</td>
-                      <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell">Wagner
+                      <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell">
+                        {{usu.nombre}}
                       </td>
                     </tr>
                     <tr style="height: 53px;">
                       <td
                         class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell u-table-cell-3">
                         ApELLIDO:</td>
-                      <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell">Castillo
+                      <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell">
+                        {{usu.apellido}}
                       </td>
                     </tr>
                     <tr style="height: 53px;">
                       <td
                         class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell u-table-cell-5">
                         cedula:</td>
-                      <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell">0705011898
-                      </td>
-                    </tr>
-                    <tr style="height: 53px;">
-                      <td
-                        class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell u-table-cell-7">
-                        TELEFONO:</td>
-                      <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell">0991483745
+                      <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell">
+                        {{usu.cedula}}
                       </td>
                     </tr>
                     <tr style="height: 73px;">
@@ -181,7 +178,8 @@
                         class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell u-table-cell-9">
                         Correo:</td>
                       <td class="u-border-2 u-border-grey-10 u-border-no-left u-border-no-right u-table-cell">
-                        wagner.castillo@unl.edu.ec</td>
+                        {{usu.correo}}
+                      </td>
                     </tr>
                     <tr style="height: 75px;">
                       <td
@@ -191,6 +189,7 @@
                     </tr>
                   </tbody>
                 </table>
+
               </div>
               <a href="#sec-22f7"
                 class="u-btn u-btn-round u-button-style u-dialog-link u-grey-15 u-hover-palette-4-base u-radius-50 u-btn-1">Modificar</a>
@@ -201,7 +200,7 @@
             <div class="u-container-layout u-container-layout-2">
               <h4 class="u-text u-text-3">Si decides abandonar el sistema y dar de baja tu cuenta. Presiona el boton
                 azul. Recuerda que apartir de ese momento tu cuenta ya no podra ser utilizada en el sistema.</h4>
-              <a href="" class="u-btn u-button-style u-btn-2">Dar de baja</a>
+              <a href="/enabledUsuario/{{usu._id}}" class="u-btn u-button-style u-btn-2">Dar de baja</a>
             </div>
           </div>
         </div>
@@ -222,32 +221,29 @@
       <div class="u-container-layout u-container-layout-1">
         <h6 class="u-text u-text-1">Modificar contraseña</h6>
         <div class="u-form u-form-1">
-          <form action="#" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
+          <form action="/Configuracion" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
             style="padding: 10px" source="custom" name="form">
             <div class="u-form-group u-form-name">
               <label for="name-75b7" class="u-form-control-hidden u-label">Nombre</label>
-              <input type="password" placeholder="Introduzca su contraseña actual" id="name-75b7" name="ClaveActual"
+              <input type="password" placeholder="Introduzca su contraseña actual" id="name-75b7" name="contra"
                 class="u-border-3 u-border-grey-30 u-input u-input-rectangle u-white" required="">
             </div>
             <div class="u-form-group u-form-name u-form-group-2">
               <label for="name-32af" class="u-form-control-hidden u-label">Nombre</label>
-              <input type="password" placeholder="Introduzca su nueva contraseña" id="name-32af" name="NuevaClave"
+              <input type="password" placeholder="Introduzca su nueva contraseña" id="name-32af" name="nuevacontra"
                 class="u-border-3 u-border-grey-30 u-input u-input-rectangle u-white" required="">
             </div>
             <div class="u-form-group u-form-name u-form-group-3">
               <label for="name-883d" class="u-form-control-hidden u-label">Nombre</label>
-              <input type="password" placeholder="Repita su nueva contraseña" id="name-883d" name="RepeticionClaveN"
+              <input type="password" placeholder="Repita su nueva contraseña" id="name-883d" name="confirmnuevacontra"
                 class="u-border-3 u-border-grey-30 u-input u-input-rectangle u-white" required="">
             </div>
             <div class="u-align-right u-form-group u-form-submit">
-              <a href="#" class="u-btn u-btn-submit u-button-style u-palette-1-light-1 u-btn-1">Aceptar<br>
-              </a>
-              <input type="submit" value="submit" class="u-form-control-hidden">
+              <button class="u-btn u-btn-submit u-button-style u-palette-1-light-1 u-btn-1">Aceptar<br>
+              </button>
+
             </div>
-            <div class="u-form-send-message u-form-send-success"> Gracias! Tu mensaje ha sido enviado. </div>
-            <div class="u-form-send-error u-form-send-message"> No se puede enviar su mensaje. Por favor, corrija los
-              errores y vuelva a intentarlo. </div>
-            <input type="hidden" value="" name="recaptchaResponse">
+
           </form>
         </div>
       </div><button class="u-dialog-close-button u-icon u-text-grey-50 u-icon-1">

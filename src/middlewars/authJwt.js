@@ -59,6 +59,23 @@ export const isAdministradorCooperativo = async (req, res, next) => {
       return res.status(500).send({ message: error });
     }
   };
+  export const isCliente = async (req, res, next) => {
+    try {
+      const user = await User.findById(req.userId);
+      const roles = await Role.find({ _id: { $in: user.roles } });
+  
+      for (let i = 0; i < roles.length; i++) {
+        if (roles[i].nombre === "Cliente") {
+          next();
+          return;
+        }
+      }
+  
+    } catch (error) {
+      console.log(error)
+      return res.status(500).send({ message: error });
+    }
+  };
 
   export const cerrarSesion = async (req, res, next) => {
     let token = req.session.destroy();
