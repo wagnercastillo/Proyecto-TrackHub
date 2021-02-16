@@ -1,0 +1,158 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+<!-- estilos rutas-->
+  <link rel="stylesheet" href="/estilosRutas/page.css" media="screen">
+  <!--link rel="stylesheet" href="/estilosRutas/Página-1.css" media="screen"-->
+  <script class="u-script" type="text/javascript" src="/estilosRutas/jquery.js" defer=""></script>
+  <!--script class="u-script" type="text/javascript" src="/estilosRutas/page.js" defer=""></script-->
+
+  <link id="u-theme-google-font" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+  <link id="u-page-google-font" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i">
+
+
+<!--Controlo de Ingreso de datos-->
+<script type="text/javascript">
+    function inhabilitar(){
+        var respuesta = confirm("¿Estas seguro que deseas HABILITAR la cooperativa?");
+        if(respuesta == true){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    function habilitar(){
+        var respuesta = confirm("¿Estas seguro que deseas INHABILITAR la cooperativa?");
+        if(respuesta == true){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+</script> 
+
+
+
+
+<section class="u-clearfix u-grey-5 u-section-2" id="carousel_ea87">
+  <div class="u-clearfix u-sheet u-sheet-1">
+    <h2 class="u-text u-text-default u-text-1"></h2>
+    <p class="u-text u-text-default u-text-2"></p>
+    <div class="u-clearfix u-expanded-width u-gutter-20 u-layout-wrap u-layout-wrap-1">
+      <div class="u-layout">
+        <div class="u-layout-col">
+          <div class="u-size-30">
+            <div class="u-layout-row">
+              <div class="u-size-30">
+                <div class="u-layout-col">
+                  <div class="u-container-style u-layout-cell u-left-cell u-layout-cell-2">
+                    <div class="u-container-layout u-container-layout-2">
+                      <h3 class="u-text u-text-4">Registro ruta</h3>
+                      <h6 class="u-text u-text-5">Registre rutas desde el inicio de la frecuencia hasta el final</h6>
+                      <div class="u-form u-form-1">
+                        {{#each err}}
+                        <div class="alert alert-danger">{{text}}</div>
+                        {{/each}}
+                        <form action="/guardarRuta/add" method="POST" enctype="multipart/form-data"
+                          class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 0;"
+                          source="custom" name="form">
+                          <div class="u-form-group u-form-name">
+                            <label for="name-3d90" class="u-label">Origen</label>
+                            <input type="text" name="origen" class="u-input u-input-rectangle u-white">
+                          </div>
+                          <div class="u-form-email u-form-group">
+                            <label for="email-3d90" class="u-label">Destino</label>
+                            <input type="text" name="destino" class="u-input u-input-rectangle u-white">
+                          </div>
+                          <div class="u-form-group u-form-group-3">
+                            <label for="text-9c68" class="u-label">Valor de la ruta</label>
+                            <input type="number" name="precio" class="u-input u-input-rectangle u-white">
+                          </div>
+                          <button class="btn tbn-primary" style="background-color: #3092d3; / * * Verde /
+border: none;
+color: blanco;
+padding: 1px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;"> Guardar</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="u-size-30">
+                <div class="u-layout-col">
+                  <div class="u-container-style u-layout-cell u-right-cell  u-layout-cell-3">
+                    <div class="u-container-layout u-container-layout-3">
+                      <h3 class="u-text u-text-6">Rutas</h3>
+                      <h6 class="u-text u-text-7"></h6>
+                      <img
+                        src="/estilosRutas/images/57e0d6424b56a514f6da8c7dda793678153bdee757596c48732f73d3914fcc51bd_1280.jpg"
+                        alt="" class="u-expanded-width u-image u-image-default u-image-1" data-image-width="1280"
+                        data-image-height="853">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--TABLA DEL REGISTRO DE RUTAS-->
+<div class="u-align-center u-clearfix u-palette-5-light-2 u-section-3 u-left-cell" id="carousel_6abd">
+  <h3 class="u-text u-text-4" style="margin-bottom: 20px;"> Tabla de Rutas </h3>
+  <nav class="navbar navbar-light bg-light">
+    <form class="container-fluid">
+      <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">Buscar</span>
+        <input type="text" class="form-control" placeholder="Origen-Destino" aria-label="Origen-Destino"
+          aria-describedby="basic-addon1">
+      </div>
+    </form>
+  </nav>
+  <container>
+
+    <table class="table text-center">
+      <thead>
+        <tr>
+          <th scope="col" style="text-align: center;">Origen</th>
+          <th scope="col"style="text-align: center;">Destino</th>
+          <th scope="col"style="text-align: center;">Precio</th>
+          <th scope="col"style="text-align: center;">Rutas</th>
+          <th scope="col"style="text-align: center;">Modificar</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each Rutas}}
+        <tr>
+          <td>{{origen}}</td>
+          <td>{{destino}}</td>
+          <td>{{precio}}</td>
+          <td>
+            {{#if estado}}
+            <a href="/enabledRuta/{{_id}}" class="btn btn-success" onclick="return habilitar()">
+              Habilitado
+            </a>
+            {{else}}
+            <a href="/enabledRuta/{{_id}}" class="btn btn-secondary" onclick="return inhabilitar()">
+              Inhabilitado
+            </a>
+            {{/if}}
+          </td>
+          <td><a href="/RutaEdit/{{_id}}" class="btn btn-info">Editar</a></td>
+        </tr>
+        
+        {{/each}}
+      </tbody>
+    </table>
+  </container>
+</div>

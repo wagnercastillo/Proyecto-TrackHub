@@ -1,0 +1,43 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<nav id="menu" class=" intro navbar navbar-fixed-top">
+    <div id="contact" class="text-center" style=" background-color: rgba(59, 59, 59, 0.651);">
+        <div class="section-title text-center">
+            <h1>Editar Cooperativa </h1>
+            <hr>
+        </div>
+        <div class="col-md-10 col-md-offset-1">
+            {{#each error}}
+            <div class="alert alert-danger">{{text}}</div>
+            {{/each}}
+            <form action="/frecuenciaEdit/{{frec._id}}" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label style="color: white;">Origen</label>
+                    <input type="text" name="origen" class="form-control" value="{{frec.origen}}">
+                </div>
+                <div class="form-group" >
+                    <label style="color: white;">Destino</label>
+                    <input type="text" name="destino" class="form-control" value="{{frec.destino}}">
+                </div>
+                <div class="form-group">
+                    <label style="color: white;">Valor</label>
+                    <input type="text" name="valor_frec" class="form-control" value="{{frec.valor_frec}}">
+                </div>
+                <div class="form-group">
+                    <label style="color: white;">Duracion</label>
+                    <input type="Number" name="duracion" class="form-control" value="{{frec.duracion}}">
+                </div>
+                
+                <button class="btn tbn-primary" style="background-color: #FF5733; / * * Verde /
+border: none;
+color: blanco;
+padding: 1px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;"> Guardar</button>
+            </form>
+            </col-md-8>
+        </div>
+    </div>
+</nav>

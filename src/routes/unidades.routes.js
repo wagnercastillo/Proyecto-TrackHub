@@ -7,16 +7,15 @@ import * as unidadesControllers from '../controllers/unidades.controller'
 import {
     verifyToken
 } from '../middlewars'
-router.get('/', unidadesControllers.Principal)
 
-router.get('/guardarUnidades/add', unidadesControllers.getUnidades)
+router.get('/guardarUnidades/add', unidadesControllers.getUnidadPrincipal)
 
-router.post('/guardarUnidades/add', unidadesControllers.createUnidades)
+router.post('/guardarUnidades/add', unidadesControllers.createdUnidades)
 
 router.get('/enabledUnidades/:id', unidadesControllers.enabledUnidades)
 
-router.get('/editarUnidades/:id', unidadesControllers.updateUnidadesaById)
+router.get('/editarUnidades/:id', unidadesControllers.updateUnidadesById)
 
-router.delete('/:unidadesId', unidadesControllers.deleteUnidadesById)
+router.post('/editarUnidades/:id', unidadesControllers.editarUnidadById)
 
 module.exports = router;

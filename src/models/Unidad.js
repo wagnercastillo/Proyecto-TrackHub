@@ -2,7 +2,7 @@ import {
     Schema,
     model
 } from 'mongoose'
-const Unidades = new Schema({
+const Unidad = new Schema({
     capacidad: {
         type: Number,
         required: true
@@ -12,6 +12,10 @@ const Unidades = new Schema({
         requerid: true
     },
     modelo: {
+        type: String,
+        requerid: true
+    },
+    placa:{
         type: String,
         requerid: true
     },
@@ -25,4 +29,4 @@ const Unidades = new Schema({
     versionKey: false
 });
 
-module.exports = model('Unidades', Unidades);
+module.exports = model('Unidad', Unidad);

@@ -1,0 +1,409 @@
+<link rel="stylesheet" href="/estilosBoleto/nicepage.css" media="screen">
+<link rel="stylesheet" href="/estilosBoletoPágina-1.css" media="screen">
+<link id="u-theme-google-font" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
+    crossorigin="anonymous" />
+
+<script class="u-script" type="text/javascript" src="/estilosBoleto/jquery.js" defer=""></script>
+<script class="u-script" type="text/javascript" src="/estilosBoleto/nicepage.js" defer=""></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+
+<section class="u-clearfix u-white u-section-1" id="sec-a801">
+
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+            <div class="u-layout">
+                <div class="u-layout-row">
+                    <div class="u-container-style u-layout-cell u-left-cell u-similar-fill u-size-60 u-layout-cell-1">
+                        <div class="u-container-layout">
+                            <div class="u-border-7 u-border-palette-2-dark-2 u-line u-line-vertical u-line-1"></div>
+                            <h5 class="u-text u-text-1">Viajes y destino</h5>
+                            <h2 class="u-text u-text-2">BOLETERIA TH</h2>
+
+                            <div class="u-form u-form-1">
+                                <form action="#" method="POST"
+                                    class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form"
+                                    style="padding: 15px" source="custom">
+                                    <div class="u-form-group u-form-name">
+                                        <label for="name-558c" class="u-form-control-hidden u-label">Name</label>
+                                        <input type="text" placeholder="Origen" id="name-558c" name="name"
+                                            class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
+                                    </div>
+                                    <div class="u-form-email u-form-group">
+                                        <label for="email-558c" class="u-form-control-hidden u-label">Email</label>
+                                        <input type="email" placeholder="Destino" id="email-558c" name="email"
+                                            class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
+                                    </div>
+                                    <div class="u-form-group u-form-submit">
+                                        <a href="#" class="u-btn u-btn-submit u-button-style">BUSCAR<br>
+                                        </a>
+                                        <input type="submit" value="submit" class="u-form-control-hidden">
+                                    </div>
+
+                                    <input type="hidden" value="" name="recaptchaResponse">
+                                </form>
+                            </div>
+                            <!--
+<img src="/estilosBoleto/images/fa1tLUOu.jpg" alt="" class="u-image u-image-default u-image-1">
+                            -->
+
+                            <div id="layoutSidenav_content">
+                                <main>
+                                    <div class="container-fluid">
+                                        <h1 class="mt-4">Administracion de turnos</h1>
+                                        <ol class="breadcrumb mb-4">
+                                            <li class="breadcrumb-item active">Registro</li>
+                                        </ol>
+
+
+                                        <div class="card mb-4">
+                                            <div class="card-header">
+                                                <i class="fas fa-table mr-1"></i>
+                                                Lista de Turnos
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered" id="dataTable" width="100%"
+                                                        cellspacing="0">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Nro</th>
+                                                                <th>Frecuencia</th>
+                                                                <th>Hora</th>
+                                                                <th>Unidad</th>
+                                                                <th>Modificar</th>
+                                                                <th>Deshabilitar</th>
+                                                            </tr>
+                                                        </thead>
+
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>01</td>
+                                                                <td>Loja-zamora</td>
+                                                                <td>10:00</td>
+                                                                <td>61</td>
+                                                                <td><a href="#"><button type="button"
+                                                                            class="u-border-2 u-border-grey-75 btn-secondary btn-sm">editar</button>
+                                                                </td></a>
+                                                                <td><input type="checkbox"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>02</td>
+                                                                <td>Loja-Quito</td>
+                                                                <td>11:00</td>
+                                                                <td>63</td>
+                                                                <td><a href="#"><button type="button"
+                                                                            class="u-border-2 u-border-grey-75 btn-secondary btn-sm">editar</button>
+                                                                </td></a>
+                                                                <td><input type="checkbox"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>03</td>
+                                                                <td>Loja-Cuenca</td>
+                                                                <td>07:00</td>
+                                                                <td>66</td>
+                                                                <td><a href="#"><button type="button"
+                                                                            class="u-border-2 u-border-grey-75 btn-secondary btn-sm">editar</button>
+                                                                </td></a>
+                                                                <td><input type="checkbox"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>04</td>
+                                                                <td>Loja-Manta</td>
+                                                                <td>22:00</td>
+                                                                <td>22</td>
+                                                                <td><a href="#"><button type="button"
+                                                                            class="u-border-2 u-border-grey-75 btn-secondary btn-sm">editar</button>
+                                                                </td></a>
+                                                                <td><input type="checkbox"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>05</td>
+                                                                <td>Loja-Guayaquil</td>
+                                                                <td>10:00</td>
+                                                                <td>33</td>
+                                                                <td><a href="#"><button type="button"
+                                                                            class="u-border-2 u-border-grey-75 btn-secondary btn-sm">editar</button>
+                                                                </td></a>
+                                                                <td><input type="checkbox"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>06</td>
+                                                                <td>Loja-Machala</td>
+                                                                <td>05:00</td>
+                                                                <td>61</td>
+                                                                <td><a href="#"><button type="button"
+                                                                            class="u-border-2 u-border-grey-75 btn-secondary btn-sm">editar</button>
+                                                                </td></a>
+                                                                <td><input type="checkbox"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>07</td>
+                                                                <td>Loja-Azogues</td>
+                                                                <td>12:00</td>
+                                                                <td>59</td>
+                                                                <td><a href="#"><button type="button"
+                                                                            class="u-border-2 u-border-grey-75 btn-secondary btn-sm">editar</button>
+                                                                </td></a>
+                                                                <td><input type="checkbox"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>08</td>
+                                                                <td>Quito-Guayaquil</td>
+                                                                <td>15:00</td>
+                                                                <td>55</td>
+                                                                <td><a href="#"><button type="button"
+                                                                            class="u-border-2 u-border-grey-75 btn-secondary btn-sm">editar</button>
+                                                                </td></a>
+                                                                <td><input type="checkbox"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>09</td>
+                                                                <td>Cuenca-Machala</td>
+                                                                <td>09:00</td>
+                                                                <td>39</td>
+                                                                <td><a href="#"><button type="button"
+                                                                            class="u-border-2 u-border-grey-75 btn-secondary btn-sm">editar</button>
+                                                                </td></a>
+                                                                <td><input type="checkbox"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>10</td>
+                                                                <td>Quito-Zamora</td>
+                                                                <td>07:00</td>
+                                                                <td>23</td>
+                                                                <td><a href="#"><button type="button"
+                                                                            class="u-border-2 u-border-grey-75 btn-secondary btn-sm">editar</button>
+                                                                </td></a>
+                                                                <td><input type="checkbox"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>11</td>
+                                                                <td>Loja-Machala</td>
+                                                                <td>11:00</td>
+                                                                <td>30</td>
+                                                                <td><a href="#"><button type="button"
+                                                                            class="u-border-2 u-border-grey-75 btn-secondary btn-sm">editar</button>
+                                                                </td></a>
+                                                                <td><input type="checkbox"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>12</td>
+                                                                <td>Cuenca-Manabi</td>
+                                                                <td>20:00</td>
+                                                                <td>22</td>
+                                                                <td><a href="#"><button type="button"
+                                                                            class="u-border-2 u-border-grey-75 btn-secondary btn-sm">editar</button>
+                                                                </td></a>
+                                                                <td><input type="checkbox"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>13</td>
+                                                                <td>Zamora-Quito</td>
+                                                                <td>22:00</td>
+                                                                <td>36</td>
+                                                                <td><a href="#"><button type="button"
+                                                                            class="u-border-2 u-border-grey-75 btn-secondary btn-sm">editar</button>
+                                                                </td></a>
+                                                                <td><input type="checkbox"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>14</td>
+                                                                <td>Machala-Loja</td>
+                                                                <td>18:00</td>
+                                                                <td>43</td>
+                                                                <td><a href="#"><button type="button"
+                                                                            class="u-border-2 u-border-grey-75 btn-secondary btn-sm">editar</button>
+                                                                </td></a>
+                                                                <td><input type="checkbox"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>15</td>
+                                                                <td>Pastaza-Loja</td>
+                                                                <td>19:00</td>
+                                                                <td>19</td>
+                                                                <td><a href="#"><button type="button"
+                                                                            class="u-border-2 u-border-grey-75 btn-secondary btn-sm">editar</button>
+                                                                </td></a>
+                                                                <td><input type="checkbox"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </main>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .u-section-4 {
+        min-height: 826px;
+    }
+
+    .u-section-4 .u-dialog-1 {
+        width: 566px;
+        min-height: 545px;
+        height: auto;
+        margin: 32px auto 60px;
+    }
+
+    .u-section-4 .u-container-layout-1 {
+        padding: 30px 30px 9px;
+    }
+
+    .u-section-4 .u-text-1 {
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        margin: 36px 272px 0 0;
+    }
+
+    .u-section-4 .u-text-2 {
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin: 20px auto 0;
+    }
+
+    .u-section-4 .u-table-1 {
+        width: 391px;
+        margin: 20px auto 0;
+    }
+
+    .u-block-9fe9-31 {
+        font-weight: 700;
+        background-image: none;
+    }
+
+    .u-section-4 .u-table-cell-1 {
+        font-weight: 700;
+    }
+
+    .u-section-4 .u-form-1 {
+        height: 255px;
+        width: 471px;
+        margin: 20px auto 0;
+    }
+
+    .u-section-4 .u-form-group-1 {
+        width: 100%;
+    }
+
+    .u-section-4 .u-label-1 {
+        font-size: 1rem;
+    }
+
+    .u-section-4 .u-form-group-2 {
+        width: 100%;
+    }
+
+    .u-section-4 .u-label-2 {
+        font-size: 1rem;
+    }
+
+    .u-section-4 .u-form-group-3 {
+        width: 100%;
+    }
+
+    .u-section-4 .u-label-3 {
+        font-size: 1rem;
+    }
+
+    .u-section-4 .u-form-group-4 {
+        width: 100%;
+    }
+
+    .u-section-4 .u-btn-1 {
+        padding-left: 60px;
+        padding-right: 60px;
+        background-image: none;
+        border-style: none;
+        text-transform: none;
+        font-weight: 700;
+    }
+
+    .u-section-4 .u-btn-2 {
+        font-weight: 700;
+        margin: -47px auto 0;
+        padding: 10px 79px 12px 78px;
+    }
+
+    .u-section-4 .u-icon-1 {
+        width: 15px;
+        height: 15px;
+        left: auto;
+        top: 17px;
+        position: absolute;
+        right: 16px;
+    }
+
+    @media (max-width: 1199px) {
+        .u-section-4 .u-table-1 {
+            width: 391px;
+        }
+
+        .u-section-4 .u-form-1 {
+            width: 471px;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .u-section-4 .u-dialog-1 {
+            width: 540px;
+        }
+    }
+
+    @media (max-width: 575px) {
+        .u-section-4 .u-dialog-1 {
+            width: 340px;
+        }
+
+        .u-section-4 .u-container-layout-1 {
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+
+        .u-section-4 .u-text-1 {
+            margin-top: 29px;
+            margin-left: 28px;
+            margin-right: 28px;
+        }
+
+        .u-section-4 .u-text-2 {
+            font-size: 1.875rem;
+        }
+
+        .u-section-4 .u-table-1 {
+            width: 320px;
+            margin-top: 0;
+        }
+
+        .u-section-4 .u-form-1 {
+            height: 152px;
+            margin-top: 5px;
+            margin-right: initial;
+            margin-left: initial;
+            width: auto;
+        }
+    }
+</style>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous"></script>
+<script src="/estilosBoleto/js/scripts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script src="/estilosBoleto/assets/demo/chart-area-demo.js"></script>
+<script src="/estilosBoleto/assets/demo/chart-bar-demo.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+<script src="/estilosBoleto/assets/demo/datatables-demo.js"></script>
