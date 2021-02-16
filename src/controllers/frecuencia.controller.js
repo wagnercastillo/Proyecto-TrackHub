@@ -111,3 +111,10 @@ export const asignarRutas = async (req, res) => {
    });
    res.send('${frecUpdate.origen} update');
 }
+
+export const getDatos = async (req, res) => {
+
+   const usu = req.session.usuActivo;
+   res.render('Usuario/Configuracion',{usu})
+
+}

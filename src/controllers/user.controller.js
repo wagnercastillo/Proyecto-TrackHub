@@ -56,5 +56,4 @@ export const singinAdm = async (req, res) => {
         req.session.save();
         res.redirect('/');
     }
-
 };

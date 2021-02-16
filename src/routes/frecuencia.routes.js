@@ -26,6 +26,7 @@ router.get('/frecuencia/rutas/:id', frecuenciaControllers.asignarRutas)
 
 router.get('/Administrador/Boleteria', frecuenciaControllers.BoleteriaAdmin)
 
-router.get('/Administrador/Cuenta', frecuenciaControllers.BoleteriaAdmin)
+router.get('/Administrador/Cuenta', frecuenciaControllers.getDatos)
+
 
 module.exports = router;

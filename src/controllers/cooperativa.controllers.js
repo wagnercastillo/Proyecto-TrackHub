@@ -149,7 +149,7 @@ export const editarCooperativaById = async (req, res) => {
          direccion,
          imageURL: result.url,
          public_id: result.public_id
-
+         
       });
       console.log(cooperativa);
       res.redirect('/guardarCooperativa/add');

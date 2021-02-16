@@ -62,6 +62,11 @@ export const signIn = async (req, res) => {
             res.redirect('/frm_inicioUsuario/add');
         }
 
+        if (!userFound.estado) {
+            req.flash('errors', 'Cuenta Inhabilitada')
+            res.redirect('/frm_inicioUsuario/add');
+        }
+
         const matchPassword = await Usuario.comparePassword(
             req.body.contrasenia,
             userFound.contrasenia
