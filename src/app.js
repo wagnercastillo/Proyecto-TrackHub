@@ -6,10 +6,7 @@ const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const session = require('express-session')
 const bcrypt = require('bcryptjs');
-
 const flash =require('connect-flash');
-
-
 
 import {createRoles} from './libs/inicioSetup'
 
@@ -57,15 +54,7 @@ app.use(require('./routes/frecuencia.routes'));
 app.use(require('./routes/cooperativa.routes'));
 app.use(require('./routes/auth.routes'));
 app.use(require('./routes/unidades.routes'));
-
 app.use(require('./routes/user.routes'));
-
-app.use(require('./routes/ruta.routes'));
-
-app.use(require('./routes/boleto.routes'));
-app.use(require('./routes/opciones.routes'));
-
-
 
 app.use(require('./routes/turno.routes'));
 
