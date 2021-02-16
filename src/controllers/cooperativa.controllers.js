@@ -154,4 +154,4 @@ export const editarCooperativaById = async (req, res) => {
       console.log(cooperativa);
       res.redirect('/guardarCooperativa/add');
    }
-}        
+}   
