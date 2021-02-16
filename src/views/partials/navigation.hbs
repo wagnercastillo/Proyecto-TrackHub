@@ -51,10 +51,15 @@
         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Bienvenido, User <b
               class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="/frm_inicioUsuario/add"><i class="icon-cog"></i> Iniciar Sesion</a></li>
-            <li><a href="/frm_registroUsuario/add"><i class="icon-cog"></i> Registrarme</a></li>
+            {{#if activo}}
+            <li><a href="/"><i class="icon-cog"></i> {{activo}}</a></li>
+            <li><a href="/"><i class="icon-off"></i> Mi cuenta</a></li>
             <li class="divider"></li>
             <li><a href="/cerrarSesion"><i class="icon-off"></i> Cerrar Sesion</a></li>
+            {{else}}
+            <li><a href="/frm_inicioUsuario/add"><i class="icon-cog"></i> Iniciar Sesion</a></li>
+            <li><a href="/frm_registroUsuario/add"><i class="icon-cog"></i> Registrarme</a></li>
+            {{/if}}
           </ul>
         </li>
       </ul>

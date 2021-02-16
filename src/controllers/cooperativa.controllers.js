@@ -12,36 +12,41 @@ const fs = require('fs-extra');
 
 export const Principal = async (req, res) => {
    ///
+   const user = req.session.usuActivo;
    const roles = req.session.roles;
-   if(roles!=null){
+   if (roles != null) {
       for (let i = 0; i < roles.length; i++) {
          if (roles[i].nombre === "Administrador_General") {
-            req.flash('gen_msg','general')
+            req.flash('gen_msg', 'general')
          }
          if (roles[i].nombre === "Administrador_Cooperativo") {
-            req.flash('cop_msg','cooperativa')
+            req.flash('cop_msg', 'cooperativa')
          }
          if (roles[i].nombre === "Cliente") {
             console.log('cliente......................................')
-            req.flash('cli_msg','cliente')
+            req.flash('cli_msg', 'cliente')
          }
       }
    }
-   const cli=req.flash('cli_msg')
-   const gen=req.flash('gen_msg')
-   const coo=req.flash('cop_msg')
+   if (user != null) {
+      req.flash('perfil', user.nombre + " " + user.apellido);
+   }
+   const activo = req.flash('perfil');
+   const cli = req.flash('cli_msg')
+   const gen = req.flash('gen_msg')
+   const coo = req.flash('cop_msg')
    const cooperativas = await Cooperativa.find({}).lean();
-   res.render('frm_Principal', { cooperativas, cli, gen, coo });
+   res.render('frm_Principal', { cooperativas, cli, gen, coo, user, activo });
    //console.log(cooperativas)
    console.log('roles...........................')
 
-   console.log('usuario...........................') 
+   console.log('usuario...........................')
 }
 
 export const getCooperativaPrincipal = async (req, res) => {
    const cooperativas = await Cooperativa.find({}).lean();
    const usuarios = await Usuario.find({}).lean();
-   res.render('cooperativas/frm_regCooperativa', { cooperativas , usuarios});
+   res.render('cooperativas/frm_regCooperativa', { cooperativas, usuarios });
 }
 export const createCooperativa = async (req, res) => {
 
@@ -149,7 +154,7 @@ export const editarCooperativaById = async (req, res) => {
          direccion,
          imageURL: result.url,
          public_id: result.public_id
-         
+
       });
       console.log(cooperativa);
       res.redirect('/guardarCooperativa/add');
