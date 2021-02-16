@@ -28,5 +28,4 @@ router.get('/Administrador/Boleteria', frecuenciaControllers.BoleteriaAdmin)
 
 router.get('/Administrador/Cuenta', frecuenciaControllers.getDatos)
 
-
 module.exports = router;
