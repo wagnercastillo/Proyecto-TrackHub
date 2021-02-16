@@ -23,8 +23,12 @@ const Cooperativa = new Schema({
     public_id: {
         type: String,
         required: true
+    },  
+    externalIDP:{
+        ref: "User",
+        type: Schema.Types.ObjectId
     }
-}, {
+}, { 
     timestamps: true,
     versionKey: false
 });

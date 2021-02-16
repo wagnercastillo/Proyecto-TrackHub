@@ -29,19 +29,18 @@
         <li><a href="/guardarCooperativa/add" class="page-scroll">Registrar Cooperativa</a></li> --}}
 
 
-        <li><a href="/" class="page-scroll">Turnos 24 Horas</a></li>
         {{#if cli}}
           <li><a href="/Opciones" class="page-scroll">Cuenta</a></li>
         {{/if}}
 
         {{#if gen}}
-        
-        <li><a href="/guardarCooperativa/add" class="page-scroll">Opciones Administrador</a></li>
+        <li><a href="/regAdministrador/add" class="page-scroll"><i class="fas fa-user-tie"></i> <i class="fas fa-plus-square"></i>  Gerente Cooperativa</a></li>
+        <li><a href="/guardarCooperativa/add" class="page-scroll"><i class="fas fa-bus"></i>  Crear Cooperativa</a></li>
         {{/if}}
 
         {{#if coo}}
 
-        <li><a href="/Administrador" class="page-scroll">Opciones Administrador</a></li>
+         <li><a href="/Administrador" class="page-scroll"><i class="fas fa-users-cog"></i> Gerente Cooperativa</a></li>
         {{/if}}
 
 
@@ -51,10 +50,15 @@
         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Bienvenido, User <b
               class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="/frm_inicioUsuario/add"><i class="icon-cog"></i> Iniciar Sesion</a></li>
-            <li><a href="/frm_registroUsuario/add"><i class="icon-cog"></i> Registrarme</a></li>
+            {{#if activo}}
+            <li><a href="/"><i class="icon-cog"></i> {{activo}}</a></li>
+            <li><a href="/"><i class="icon-off"></i> Mi cuenta</a></li>
             <li class="divider"></li>
             <li><a href="/cerrarSesion"><i class="icon-off"></i> Cerrar Sesion</a></li>
+            {{else}}
+            <li><a href="/frm_inicioUsuario/add"><i class="icon-cog"></i> Iniciar Sesion</a></li>
+            <li><a href="/frm_registroUsuario/add"><i class="icon-cog"></i> Registrarme</a></li>
+            {{/if}}
           </ul>
         </li>
       </ul>
