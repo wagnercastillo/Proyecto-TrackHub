@@ -89,9 +89,10 @@
                                                     class="u-border-1 u-border-grey-30 u-input u-input-rectangle">
                                             </div>
                                             <div class="u-form-group u-form-group-3">
-                                                <label class="u-label">Duracion frecuencia</label>
-                                                <a href="/frecuencia/rutas/{{_id}}" class="btn btn-info"
-                                                    data-bs-toggle="modal" data-bs-target="#staticBackdrop">Rutas</a>
+                                                <label class="u-label">Asignar Rutas:</label>
+                                                </br>
+                                                <a href="" class="btn btn-info"
+                                                    data-bs-toggle="modal" data-bs-target="#staticBackdrop">Asignar</a>
                                             </div>
 
 
@@ -149,8 +150,8 @@ font-size: 16px;"> Guardar</button>
 
                 </td>
                 <td><a href="/frecuenciaEdit/{{_id}}" class="btn btn-info">Editar</a></td>
-                <td><a href="/frecuencia/rutas/{{_id}}" class="btn btn-info" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop">Rutas</a></td>
+                <td><a href="/frecuencia/rutasAsignadas/{{_id}}" class="btn btn-info" data-bs-toggle="modal"
+                        data-bs-target="#listarutas">Rutas</a></td>
 
             </tr>
             {{/each}}
@@ -169,10 +170,40 @@ font-size: 16px;"> Guardar</button>
             <div class="modal-body">
                 <form>
                     {{#each Rutas}}
-                    <a class="btn btn-secondary">
+                    <a href="/frecuencia/rutas/{{_id}}" class="btn btn-secondary">
                         {{origen}}-{{destino}}
                     </a>
                     {{/each}}
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="listarutas" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Rutas registradas</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    
+                    <div class="form-group">
+                    <label style="color: rgb(3, 0, 0);">Origen</label>
+                    
+                    <label type="text" name="origen" class="form-control" value="">{{#each Frecuencias}}{{rutas}}{{/each}}</label>
+                    
+                </div>
+
+                    </a>
+                    
                 </form>
             </div>
             <div class="modal-footer">

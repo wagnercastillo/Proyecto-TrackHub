@@ -2,6 +2,8 @@ const Frecuencia = require('../models/Frecuencia');
 const Ruta = require('../models/Ruta');
 import Usuario from '../models/User'
 
+const rutas = [];
+
 export const Principal = async (req, res) => {
    res.render('HomeAdministradores');
 }
@@ -23,7 +25,7 @@ export const getFrecuenciaPrincipal = async (req, res) => {
 export const getConfiguracion = async (req, res) => {
 
    const usu = req.session.usuActivo;
-   res.render('Usuario/Configuracion',{usu})
+   res.render('Usuario/Configuracion', { usu })
 
 }
 
@@ -51,9 +53,12 @@ export const createFrecuencia = async (req, res) => {
          origen,
          destino,
          valor_frec,
-         duracion
+         duracion,
+         rutas
       });
       await newFrecuencia.save();
+      rutas.splice();
+      console.log(newFrecuencia)
       res.redirect('/guardarFrecuencia/add')
    }
 }
@@ -110,20 +115,29 @@ export const editarFrecuenciaById = async (req, res) => {
 }
 
 
+
 export const asignarRutas = async (req, res) => {
-   const { _id } = req.params;
-   const { ruta } = req.body;
-   const frecUpdate = await Frecuencia.findByIdAndUpdate(_id, {
-      $push: {
-         ruta
+   const ruta = await Ruta.findById(req.params.id);
+   rutas.push(ruta);
+   console.log(rutas)
+}
+
+export const rutasAsignadas = async (req, res) => {
+   const lista = [];
+   const frecuencia = Frecuencia.findById(req.params.id);
+   for (let x = 0; x < frecuencia.rutas.length; x++) {
+      for (let y = 0; y < Ruta.length; y++) {
+         if (frecuencia.rutas[x] == Ruta._id[y]) {
+            lista.push(Ruta[y]);
+         }
       }
-   });
-   res.send('${frecUpdate.origen} update');
+   }
+   console.log(lista)
 }
 
 export const getDatos = async (req, res) => {
 
    const usu = req.session.usuActivo;
-   res.render('frecuencias/Configuracion',{usu})
+   res.render('frecuencias/Configuracion', { usu })
 
 }
