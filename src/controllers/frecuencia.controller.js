@@ -5,6 +5,14 @@ export const Principal = async (req, res) => {
    res.render('HomeAdministradores');
 }
 
+export const BoleteriaAdmin = async (req, res) => {
+   res.render('AdBoleteria/AdBoleteria');
+}
+
+export const CuentaAdmin = async (req, res) => {
+   res.render('Usuario/Configuracion', {});
+}
+
 export const getFrecuenciaPrincipal = async (req, res) => {
    const Frecuencias = await Frecuencia.find({}).lean();
    const Rutas = await Ruta.find({}).lean();

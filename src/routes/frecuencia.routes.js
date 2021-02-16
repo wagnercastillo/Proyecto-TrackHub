@@ -22,4 +22,10 @@ router.post('/frecuenciaEdit/:id', frecuenciaControllers.editarFrecuenciaById)
 
 router.get('/frecuencia/rutas/:id', frecuenciaControllers.asignarRutas)
 
+
+
+router.get('/Administrador/Boleteria', frecuenciaControllers.BoleteriaAdmin)
+
+router.get('/Administrador/Cuenta', frecuenciaControllers.BoleteriaAdmin)
+
 module.exports = router;

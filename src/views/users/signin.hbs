@@ -10,7 +10,10 @@
                     <hr>
                 </div>
                 <div class="col-md-10 col-md-offset-1">
-                    <form action="/signin/add" method="POST" >
+                    {{#if sms}}
+                    <div class="alert alert-danger">{{sms}}</div>
+                    {{/if}}
+                    <form action="/signin/add" method="POST">
                         <div class="form-group ">
                             <label class="text-white">Correo </label>
                             <input type="email" name="correo" class="form-control" placeholder="Correo" autofocus>
