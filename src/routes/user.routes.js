@@ -1,13 +1,13 @@
-import {Router} from 'express'
-const router = Router()
+import { Router } from "express";
+const router = Router();
 
-router.get('/users/signin',(req, res) => {
-    res.render('users/signin');
-});
-router.get('/users/signup',(req, res) => {
-    res.render('users/signup');
-});
+import * as admin from '../controllers/user.controller';
 
+import { authJwt,verifySignup } from "../middlewars";
+
+router.get('/regAdministrador/add', admin.registroAdmin)
+
+router.post("/signupAdm", [authJwt.verifyToken, authJwt.isAdministradorGeneral],admin.singinAdm);
 
 
 module.exports = router;

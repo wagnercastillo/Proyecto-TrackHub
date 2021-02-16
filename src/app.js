@@ -6,6 +6,7 @@ const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const session = require('express-session')
 const bcrypt = require('bcryptjs');
+const flash =require('connect-flash');
 
 import {createRoles} from './libs/inicioSetup'
 
@@ -14,7 +15,6 @@ const app= express();
 createRoles();
 require('./database');
 
-import authRuta from './routes/auth.routes'
 
 //Settings
 app.set('port', process.env.PORT||3000);
@@ -37,8 +37,10 @@ app.use(session({
     secret: 'mysecretapp',
     resave: true,
     saveUninitialized: true
-
 }))
+app.use(flash());
+//
+//
 const storage = multer.diskStorage({
     destination: path.join(__dirname,'public/uploads'),
     filename: (req, file, cb)=>{
@@ -52,9 +54,8 @@ app.use(multer({storage}).single('image'));
 app.use(require('./routes/cooperativa.routes'));
 app.use(require('./routes/auth.routes'));
 app.use(require('./routes/unidades.routes'));
+app.use(require('./routes/user.routes'));
 
-
-//app.use('/api/auth', authRuta)
 
 module.exports=app;
 

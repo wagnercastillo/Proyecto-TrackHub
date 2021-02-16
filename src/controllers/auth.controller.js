@@ -8,7 +8,8 @@ export const obtenerFrmUsuario = async (req, res) => {
     res.render('users/signup');
 }
 export const obtenerFrmUsuIni = async (req, res) => {
-    res.render('users/signin');
+    const sms = req.flash('errors');
+    res.render('users/signin', { sms });
 }
 
 export const signUp = async (req, res) => {
@@ -26,7 +27,7 @@ export const signUp = async (req, res) => {
         })
 
         // verificamos roles
-        if (req.body.roles) {
+        if (req.body.roles) { 
             const foundRol = await Rol.find({ nombre: { $in: roles } });
             newUser.roles = foundRol.map((rol) => rol._id);
         } else {
@@ -42,40 +43,49 @@ export const signUp = async (req, res) => {
         const token = jwt.sign({ id: savedUser._id }, config.SECRET, {
             expiresIn: 86400, // 24 hours
         });
-        //test
-        return res.status(200).json({ token });
-        
+
+        req.session.token = token;
+        req.session.save();
+        res.redirect('/');
     } catch (error) {
         console.log(error);
-        return res.status(500).json(error);
+        return res.status(500).send({ message: 'Error al crear el usuario' });
     }
 };
-
 export const signIn = async (req, res) => {
     try {
         // validar  correo electrónico 
         const userFound = await Usuario.findOne({ correo: req.body.correo }).populate("roles");
 
-        if (!userFound) return res.status(400).json({ message: "User Not Found" });
+        if (!userFound) {
+            req.flash('errors', 'Usuario no encontrado')
+            res.redirect('/frm_inicioUsuario/add');
+        }
 
         const matchPassword = await Usuario.comparePassword(
             req.body.contrasenia,
-            userFound.contrasenia 
+            userFound.contrasenia
         );
-
-        if (!matchPassword)
-            return res.status(401).json({
-                token: null,
-                message: "Invalid Password",
+       
+        if (!matchPassword) {
+            req.flash('errors', 'Contrasenia Incorrecta')
+            res.redirect('/frm_inicioUsuario/add');
+        } else {
+            const token = jwt.sign({ id: userFound._id }, config.SECRET, {
+                expiresIn: 86400, // 24 hours
             });
-
-        const token = jwt.sign({ id: userFound._id }, config.SECRET, {
-            expiresIn: 86400, // 24 hours
-        });
-        //test
-        // res.json({ token });
-        res.redirect('/frm_inicioUsuario/add')
+            ////Capturamos roll
+            const rId=userFound._id ;
+            const roles = await Rol.find({ _id: { $in: userFound.roles } });
+            req.session.roles=roles;
+            ////
+            req.session.token = token;
+            req.session.save();
+            console.log(req.session);
+            res.redirect('/');
+        }
     } catch (error) {
         console.log(error);
     }
-};
+}
+

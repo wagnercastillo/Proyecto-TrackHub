@@ -1,4 +1,5 @@
 const Cooperativa = require('../models/Cooperativa');
+import Usuario from '../models/User'
 
 const cloudinary = require('cloudinary');
 cloudinary.config({
@@ -10,14 +11,36 @@ cloudinary.config({
 const fs = require('fs-extra');
 
 export const Principal = async (req, res) => {
+   ///
+   const roles = req.session.roles;
+   if(roles!=null){
+      for (let i = 0; i < roles.length; i++) {
+         if (roles[i].nombre === "Administrador_General") {
+            req.flash('gen_msg','general')
+         }
+         if (roles[i].nombre === "Administrador_Cooperativo") {
+            req.flash('cop_msg','cooperativa')
+         }
+         if (roles[i].nombre === "Cliente") {
+            console.log('cliente......................................')
+            req.flash('cli_msg','cliente')
+         }
+      }
+   }
+   const cli=req.flash('cli_msg')
+   const gen=req.flash('gen_msg')
+   const coo=req.flash('cop_msg')
    const cooperativas = await Cooperativa.find({}).lean();
-   res.render('frm_Principal', { cooperativas });
+   res.render('frm_Principal', { cooperativas, cli, gen, coo });
    console.log(cooperativas)
+   console.log('roles...........................')
+   console.log(roles)  
 }
 
 export const getCooperativaPrincipal = async (req, res) => {
    const cooperativas = await Cooperativa.find({}).lean();
-   res.render('cooperativas/frm_regCooperativa', { cooperativas });
+   const usuarios = await Usuario.find({}).lean();
+   res.render('cooperativas/frm_regCooperativa', { cooperativas , usuarios});
 }
 export const createCooperativa = async (req, res) => {
    const { nombre, direccion } = req.body;
@@ -82,19 +105,19 @@ export const editarCooperativaById = async (req, res) => {
    if (errors.length > 0) {
       const { id } = req.params;
       const coop = await Cooperativa.findById(id).lean();
-      res.render('cooperativas/frm_editCooperativa', { coop,errors},)
+      res.render('cooperativas/frm_editCooperativa', { coop, errors },)
    } else {
-   
-   const result = await cloudinary.v2.uploader.upload(req.file.path);
 
-   const cooperativa = await Cooperativa.findByIdAndUpdate(req.params.id, {
-      nombre,
-      direccion,
-      imageURL: result.url,
-      public_id: result.public_id
+      const result = await cloudinary.v2.uploader.upload(req.file.path);
 
-   });
-   console.log(cooperativa);
-   res.redirect('/guardarCooperativa/add');
-}
+      const cooperativa = await Cooperativa.findByIdAndUpdate(req.params.id, {
+         nombre,
+         direccion,
+         imageURL: result.url,
+         public_id: result.public_id
+
+      });
+      console.log(cooperativa);
+      res.redirect('/guardarCooperativa/add');
+   }
 }        

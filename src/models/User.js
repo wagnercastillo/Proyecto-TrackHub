@@ -26,7 +26,7 @@ const usuarioBD = new Schema({
         type:Boolean,
         required: true, 
         default:true
-    },
+    },  
     roles: [{
         ref: "Rol",
         type: Schema.Types.ObjectId
