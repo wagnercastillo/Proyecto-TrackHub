@@ -31,13 +31,7 @@ export const Principal = async (req, res) => {
    const gen=req.flash('gen_msg')
    const coo=req.flash('cop_msg')
    const cooperativas = await Cooperativa.find({}).lean();
-<<<<<<< HEAD
    res.render('frm_Principal', { cooperativas, cli, gen, coo });
-=======
-   res.render('frm_Principal', {
-      cooperativas
-   });
->>>>>>> e4620a0254d9941856b75974ddb4355d910fe5de
    console.log(cooperativas)
    console.log('roles...........................')
    console.log(roles)  
@@ -45,14 +39,8 @@ export const Principal = async (req, res) => {
 
 export const getCooperativaPrincipal = async (req, res) => {
    const cooperativas = await Cooperativa.find({}).lean();
-<<<<<<< HEAD
    const usuarios = await Usuario.find({}).lean();
    res.render('cooperativas/frm_regCooperativa', { cooperativas , usuarios});
-=======
-   res.render('cooperativas/frm_regCooperativa', {
-      cooperativas
-   });
->>>>>>> e4620a0254d9941856b75974ddb4355d910fe5de
 }
 export const createCooperativa = async (req, res) => {
 
@@ -150,14 +138,7 @@ export const editarCooperativaById = async (req, res) => {
          id
       } = req.params;
       const coop = await Cooperativa.findById(id).lean();
-<<<<<<< HEAD
       res.render('cooperativas/frm_editCooperativa', { coop, errors },)
-=======
-      res.render('cooperativas/frm_editCooperativa', {
-         coop,
-         errors
-      }, )
->>>>>>> e4620a0254d9941856b75974ddb4355d910fe5de
    } else {
 
       const result = await cloudinary.v2.uploader.upload(req.file.path);
@@ -172,8 +153,4 @@ export const editarCooperativaById = async (req, res) => {
       console.log(cooperativa);
       res.redirect('/guardarCooperativa/add');
    }
-<<<<<<< HEAD
 }        
-=======
-}
->>>>>>> e4620a0254d9941856b75974ddb4355d910fe5de
