@@ -39,6 +39,12 @@
         }
     }
 </script>
+<script>
+    const aux = selectElement.addEventListener('change', (event) => {
+    const resultado = document.querySelector('.resultado');
+    resultado.textContent = `Te gusta el sabor ${event.target.value}`;
+  });
+</script>
 <!---LOCALIZACION DEL FORMULARIO-->
 <main>
     <div class="container-fluid">
@@ -67,43 +73,22 @@
                                     <label class="u-label">Minuto</label>
                                     <input type="Number" name="minuto">
                                 </div>
-                                <div class="mb-3">
-                                    <label for="inputEmailAddress">Seleccionar
-                                        frequencia</label>
-                                    <!-- Button trigger modal -->
-                                    <div class="mb-3">
-                                        <div class="dropdown">
-                                            <button class="btn btn-secondary dropdown-toggle" type="button"
-                                                id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                                                aria-expanded="false">
-                                                Elegir Frecuencia
-                                            </button>
-                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                {{#each Frecuencia}}
-                                                <li><a class="dropdown-item" href="#">{{origen}} - {{destino}}</a></li>
-                                                {{/each}}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!-- Modal--->
-                                    <!-- Button trigger modal -->
-                                    <label for="inputEmailAddress">Seleccionar
-                                        Unidad </label>
-                                    <div class="mb-3">
-                                        <div class="dropdown">
-                                            <button class="btn btn-secondary dropdown-toggle" type="button"
-                                                id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                                                aria-expanded="false">
-                                                Elegir Unidad
-                                            </button>
-                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                {{#each unidad}}
-                                                <li><a class="dropdown-item" href="#">Placa: {{placa}} Chofer: {{correoChofer}}</a></li>
-                                                {{/each}}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <button class="btn tbn-primary" style="background-color: #c76414; / * * Verde /
+
+                                <div class="u-form-group u-form-group-3">
+                                                <label class="u-label">Asignar Frecuencia:</label>
+                                                </br>
+                                                <a href="" class="btn btn-info"
+                                                    data-bs-toggle="modal" data-bs-target="#staticBackdrop">Asignar</a>
+                                            </div>
+
+                                <!--  -->
+                                <div class="u-form-group u-form-group-3">
+                                                <label class="u-label">Asignar Unidad:</label>
+                                                </br>
+                                                <a href="" class="btn btn-info"
+                                                    data-bs-toggle="modal" data-bs-target="#static">Asignar</a>
+                                            </div>
+                                <button class="btn tbn-primary" style="background-color: #c76414; / * * Verde /
 border: none;
 color: blanco;
 padding: 1px 32px;

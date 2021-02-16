@@ -16,6 +16,14 @@ const Turno = new Schema({
         required: true,
         default: true
     },
+    frecuencia: {
+        ref: "frecuencia",
+        type: Schema.Types.ObjectId
+    },
+    unidad: {
+        ref: "unidad",
+        type: Schema.Types.ObjectId
+    },
 }, {
     timestamps: true,
     versionKey: false
