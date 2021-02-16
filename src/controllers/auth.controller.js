@@ -79,6 +79,13 @@ export const signIn = async (req, res) => {
             const roles = await Rol.find({ _id: { $in: userFound.roles } });
             req.session.roles=roles;
             ////
+            const usuActivo = await Usuario.findById(rId).lean();
+            req.session.usuActivo = usuActivo
+            console.log('usuuuaaaarioooooo')
+            console.log(usuActivo)
+            console.log('ssssssssssssssssssssssssss')
+            req.session.roles=roles;
+            ///
             req.session.token = token;
             req.session.save();
             console.log(req.session);

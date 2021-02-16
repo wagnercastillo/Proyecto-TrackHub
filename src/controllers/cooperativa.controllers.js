@@ -32,9 +32,10 @@ export const Principal = async (req, res) => {
    const coo=req.flash('cop_msg')
    const cooperativas = await Cooperativa.find({}).lean();
    res.render('frm_Principal', { cooperativas, cli, gen, coo });
-   console.log(cooperativas)
+   //console.log(cooperativas)
    console.log('roles...........................')
-   console.log(roles)  
+
+   console.log('usuario...........................') 
 }
 
 export const getCooperativaPrincipal = async (req, res) => {

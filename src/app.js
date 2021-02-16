@@ -55,7 +55,7 @@ app.use(require('./routes/cooperativa.routes'));
 app.use(require('./routes/auth.routes'));
 app.use(require('./routes/unidades.routes'));
 app.use(require('./routes/user.routes'));
-
+app.use(require('./routes/opciones.routes'));
 app.use(require('./routes/turno.routes'));
 
 module.exports=app;

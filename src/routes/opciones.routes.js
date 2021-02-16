@@ -4,12 +4,10 @@ const {
 const router = Router();
 
 import * as opcionesControllers from '../controllers/opciones.controller'
-import {
-    verifyToken
-} from '../middlewars'
+import { authJwt } from "../middlewars";
 
 
-router.get('/Opciones', opcionesControllers.Principal)
+router.get('/Opciones',[authJwt.verifyToken, authJwt.isCliente], opcionesControllers.Principal)
 router.get('/Configuracion', opcionesControllers.getConfiguracion)
 router.get('/Historial', opcionesControllers.getHistorial)
 

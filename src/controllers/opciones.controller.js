@@ -1,13 +1,15 @@
-//const Boleto = require('../models/Boleto');
+const Usuario = require('../models/User');
 
 export const Principal = async (req, res) => {
-
-    res.render('Usuario/OpcionesUsuario')
+    const usu = req.session.usuActivo;
+    
+    res.render('Usuario/OpcionesUsuario', {usu})
 
 }
 
 export const getConfiguracion = async (req, res) => {
 
+    
     res.render('Usuario/Configuracion')
 
 }
