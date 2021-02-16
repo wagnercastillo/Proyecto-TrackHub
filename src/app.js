@@ -6,11 +6,8 @@ const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const session = require('express-session')
 const bcrypt = require('bcryptjs');
-<<<<<<< HEAD
 const flash =require('connect-flash');
 
-=======
->>>>>>> e4620a0254d9941856b75974ddb4355d910fe5de
 import {createRoles} from './libs/inicioSetup'
 
 //Inicializations
@@ -57,15 +54,7 @@ app.use(require('./routes/frecuencia.routes'));
 app.use(require('./routes/cooperativa.routes'));
 app.use(require('./routes/auth.routes'));
 app.use(require('./routes/unidades.routes'));
-<<<<<<< HEAD
 app.use(require('./routes/user.routes'));
-=======
-app.use(require('./routes/ruta.routes'));
-
-app.use(require('./routes/boleto.routes'));
-app.use(require('./routes/opciones.routes'));
-
->>>>>>> e4620a0254d9941856b75974ddb4355d910fe5de
 
 app.use(require('./routes/turno.routes'));
 
