@@ -1,5 +1,5 @@
 import User from "../models/User";
-
+/** Verificamos segun el numero de cedula o pellido existe */
 export const verificarCorreoCedula = async (req, res, next) => {
   try {
     const nombre = await User.findOne({ nombre: req.body.nombre });

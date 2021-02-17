@@ -1,7 +1,7 @@
 const Cooperativa = require('../models/Cooperativa');
 import Usuario from '../models/User'
 
-///Autentificacion en caludirani
+/** Autentificacion en caludirani */
 const cloudinary = require('cloudinary');
 cloudinary.config({
    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -10,9 +10,9 @@ cloudinary.config({
 });
 
 const fs = require('fs-extra');
-//Reireccion de los perfiles
+/**Reireccion de los perfiles */
 export const Principal = async (req, res) => {
-   ///
+  /**  Direcionamos segun el tipo de roll*/
    const user = req.session.usuActivo;
    const roles = req.session.roles;
    if (roles != null) {
@@ -43,13 +43,13 @@ export const Principal = async (req, res) => {
 
    console.log('usuario...........................')
 }
-//Renderizamos la pestana cooperativas
+/** Renderizamos la pestana cooperativas */ 
 export const getCooperativaPrincipal = async (req, res) => {
    const cooperativas = await Cooperativa.find({}).lean();
    const usuarios = await Usuario.find({}).lean();
    res.render('cooperativas/frm_regCooperativa', { cooperativas, usuarios });
 }
-//Creamos cooperativa
+/** Creamos cooperativa */
 export const createCooperativa = async (req, res) => {
    //Verificacion de campos vacios
    console.log('verificacion de repeticion');
@@ -75,7 +75,7 @@ export const createCooperativa = async (req, res) => {
          text: 'No ha selecionado el logo de la Cooperativa'
       });
    }
-   //Verificamos si un usuario ya es gerente
+   /** Verificamos si un usuario ya es gerente */
    const us = await Usuario.findOne({ cedula: cedula});
    const co = await Cooperativa.findOne({ externalIDP: us._id});
    console.log(co)
@@ -90,7 +90,7 @@ export const createCooperativa = async (req, res) => {
       res.render('cooperativas/frm_regCooperativa', { cooperativas, usuarios ,errors});
 
    } else {
-      //Guardamos el registro
+      /**Guardamos el registro */
       const result = await cloudinary.v2.uploader.upload(req.file.path);
       const newCoperativa = new Cooperativa({
          nombre,
@@ -103,7 +103,6 @@ export const createCooperativa = async (req, res) => {
       console.log(user)
       newCoperativa.externalIDP = [user._id];
 
-      console.log('//////////////////////////')
       
       await newCoperativa.save();  
       await fs.unlink(req.file.path)
@@ -111,7 +110,7 @@ export const createCooperativa = async (req, res) => {
    }
 }
 
-//modificar
+/** Modificacion el estado de la cooperativa */
 export const enabledCooperativa = async (req, res) => {
    const {
       id
@@ -121,14 +120,14 @@ export const enabledCooperativa = async (req, res) => {
    await coop.save();
    res.redirect('/guardarCooperativa/add')
 }
-//rendorisamos la pestana modificat
+/** rendorisamos la pestana modificar*/
 export const getCooperativaById = async (req, res) => {
    const cooperativa = await Cooperativa.findById(req.params.id);
    res.render('partials/modificar_cooperativa_formulario', {
       cooperativa
    });
 }
-//Editamos los campos de cooperativa
+/** Editamos los campos de cooperativa */
 export const updateCooperativaById = async (req, res) => {
    const {
       id
@@ -138,7 +137,7 @@ export const updateCooperativaById = async (req, res) => {
       coop
    })
 }
-//Obtenemos el id del usuario para asignar como gerente
+/** Obtenemos el id del usuario para asignar como gerente */
 export const obtenerID = async (req, res) => {
    const {
       id
@@ -147,9 +146,9 @@ export const obtenerID = async (req, res) => {
    const cooperativas = await Cooperativa.find({}).lean();
    res.render('cooperativas/frm_regCooperativa', { usu, cooperativas});
 }
-//Editamos cooperativa
+/** Editamos cooperativa */
 export const editarCooperativaById = async (req, res) => {
-   //Validacion de campos
+   /** Validacion de campos */
    const {
       nombre,
       direccion
@@ -177,7 +176,7 @@ export const editarCooperativaById = async (req, res) => {
       const coop = await Cooperativa.findById(id).lean();
       res.render('cooperativas/frm_editCooperativa', { coop, errors },)
    } else {
-
+      /** Actualizamos el objeto cooperativa*/
       const result = await cloudinary.v2.uploader.upload(req.file.path);
 
       const cooperativa = await Cooperativa.findByIdAndUpdate(req.params.id, {
