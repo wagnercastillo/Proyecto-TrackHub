@@ -3,17 +3,19 @@ import jwt from 'jsonwebtoken'
 import config from '../config'
 import Rol from '../models/Rol';
 import { json } from 'express';
-
+//Renderisamos pestana Administraccion general
 export const inicioAdmin = async (req, res) => {
     const sms = req.flash('errors');
     res.render('AdminGeneral/AdminGeneral', sms);
 }
-
+//Regitro para usuarios
 export const registroAdmin = async (req, res) => {
     const sms = req.flash('errors');
     res.render('users/signupAdm', sms);
 }
+
 export const singinAdm = async (req, res) => {
+    //Validamos campos
     const { cedula, nombre, apellido, correo, contrasenia, roles } = req.body;
     const err = [];
     if (!nombre) {
@@ -34,6 +36,7 @@ export const singinAdm = async (req, res) => {
     if (err.length > 0) {
         res.render('users/signupAdm', {err});
     } else {
+        //Guardamos el objeto
         const newUser = new Usuario({
             cedula,
             nombre,
