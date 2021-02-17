@@ -11,7 +11,7 @@ export const inicioAdmin = async (req, res) => {
 //Regitro para usuarios
 export const registroAdmin = async (req, res) => {
     const sms = req.flash('errors');
-    res.render('users/signupAdm', sms);
+    res.render('users/signupAdm', sms, );
 }
 
 export const singinAdm = async (req, res) => {
