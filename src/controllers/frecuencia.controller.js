@@ -3,32 +3,32 @@ const Ruta = require('../models/Ruta');
 import Usuario from '../models/User'
 
 const rutas = [];
-
+//renderizamos vista administradores
 export const Principal = async (req, res) => {
    res.render('HomeAdministradores');
 }
-
+//renderizamos boleteria
 export const BoleteriaAdmin = async (req, res) => {
    res.render('AdBoleteria/AdBoleteria');
 }
-
+//renderizamos configuraciones de cuenta
 export const CuentaAdmin = async (req, res) => {
    res.render('Usuario/Configuracion', {});
 }
-
+//rederizamos la ventana de administracion de frecuencias
 export const getFrecuenciaPrincipal = async (req, res) => {
    const Frecuencias = await Frecuencia.find({}).lean();
    const Rutas = await Ruta.find({}).lean();
    res.render('frecuencias/frecuencia', { Frecuencias, Rutas });
 }
-
+//renderizamos la vista a los datos del administrador
 export const getConfiguracion = async (req, res) => {
 
    const usu = req.session.usuActivo;
    res.render('Usuario/Configuracion', { usu })
 
 }
-
+//creamos frecuencias
 export const createFrecuencia = async (req, res) => {
    const { origen, destino, valor_frec, duracion } = req.body;
    const error = [];
@@ -63,7 +63,7 @@ export const createFrecuencia = async (req, res) => {
    }
 }
 
-//modificar
+//modificar el estado 
 export const enabledFrecuencia = async (req, res) => {
    const { id } = req.params;
    const frecu = await Frecuencia.findById(id);
@@ -76,13 +76,15 @@ export const getFrecuenciaById = async (req, res) => {
    const Frecuencia = await Frecuencia.findById(req.params.id);
    res.render('partials/modificar_Frecuencia_formulario', { Frecuencia });
 }
+
+//redirigimos al formulario de modificacion
 export const updateFrecuenciaById = async (req, res) => {
    const { id } = req.params;
    const frec = await Frecuencia.findById(id).lean();
    const Rutas = await Ruta.find({}).lean();
    res.render('Frecuencias/frm_editFrecuencia', { frec , Rutas})
 }
-
+//editamos las frecuencias con los datos del formulario
 export const editarFrecuenciaById = async (req, res) => {
    const { origen, destino, valor_frec, duracion } = req.body;
    const error = [];
@@ -117,12 +119,12 @@ export const editarFrecuenciaById = async (req, res) => {
 }
 
 
-
+//asignamos ruta al formulario
 export const asignarRutas = async (req, res) => {
    const ruta = await Ruta.findById(req.params.id); 
    rutas.push(ruta);
 }
-
+//presentamos las rutas asignadas
 export const rutasAsignadas = async (req, res) => {
    const lista = [];
    const frecuencia = Frecuencia.findById(req.params.id);
