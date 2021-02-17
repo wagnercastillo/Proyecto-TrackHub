@@ -3,32 +3,68 @@ const Ruta = require('../models/Ruta');
 import Usuario from '../models/User'
 
 const rutas = [];
-//renderizamos vista administradores
+/**
+ *renderizamos vista administradores
+ *
+ * @param {*} req -
+ * @param {*} res - renderizamos vista administradores
+ */
 export const Principal = async (req, res) => {
+   
    res.render('HomeAdministradores');
 }
-//renderizamos boleteria
+
+/**
+ *renderizamos boleteria
+ *
+ * @param {*} req -
+ * @param {*} res - renderizamos boleteria
+ */
 export const BoleteriaAdmin = async (req, res) => {
    res.render('AdBoleteria/AdBoleteria');
 }
-//renderizamos configuraciones de cuenta
+
+/**
+ *renderizamos configuraciones de cuenta
+ *
+ * @param {*} req -
+ * @param {*} res - renderizamos configuraciones de cuenta
+ */
 export const CuentaAdmin = async (req, res) => {
    res.render('Usuario/Configuracion', {});
 }
-//rederizamos la ventana de administracion de frecuencias
+
+/**
+ *rederizamos la ventana de administracion de frecuencias
+ *
+ * @param {*} req -
+ * @param {*} res - rederizamos la ventana de administracion de frecuencias
+ */
 export const getFrecuenciaPrincipal = async (req, res) => {
    const Frecuencias = await Frecuencia.find({}).lean();
    const Rutas = await Ruta.find({}).lean();
    res.render('frecuencias/frecuencia', { Frecuencias, Rutas });
 }
-//renderizamos la vista a los datos del administrador
+
+/**
+ *renderizamos la vista a los datos del administrador
+ *
+ * @param {*} req - usuario activo
+ * @param {*} res - renderizamos la vista a los datos del administrador
+ */
 export const getConfiguracion = async (req, res) => {
 
    const usu = req.session.usuActivo;
    res.render('Usuario/Configuracion', { usu })
 
 }
-//creamos frecuencias
+
+/**
+ *creamos frecuencias
+ *
+ * @param {*} req - valores del formulario
+ * @param {*} res - creamos frecuencias
+ */
 export const createFrecuencia = async (req, res) => {
    const { origen, destino, valor_frec, duracion } = req.body;
    const error = [];
@@ -63,7 +99,12 @@ export const createFrecuencia = async (req, res) => {
    }
 }
 
-//modificar el estado 
+/**
+ *modificar el estado 
+ *
+ * @param {*} req - identificador de la frecuencia
+ * @param {*} res - modificar el estado 
+ */
 export const enabledFrecuencia = async (req, res) => {
    const { id } = req.params;
    const frecu = await Frecuencia.findById(id);
@@ -77,14 +118,25 @@ export const getFrecuenciaById = async (req, res) => {
    res.render('partials/modificar_Frecuencia_formulario', { Frecuencia });
 }
 
-//redirigimos al formulario de modificacion
+/**
+ *redirigimos al formulario de modificacion
+ *
+ * @param {*} req - identificador de la frecuencia
+ * @param {*} res - redirigimos al formulario de modificacion
+ */
 export const updateFrecuenciaById = async (req, res) => {
    const { id } = req.params;
    const frec = await Frecuencia.findById(id).lean();
    const Rutas = await Ruta.find({}).lean();
    res.render('Frecuencias/frm_editFrecuencia', { frec , Rutas})
 }
-//editamos las frecuencias con los datos del formulario
+
+/**
+ *editamos las frecuencias con los datos del formulario
+ *
+ * @param {*} req - cuerpo del formulario
+ * @param {*} res - redirige a la pagina de administracion de frecuencias
+ */
 export const editarFrecuenciaById = async (req, res) => {
    const { origen, destino, valor_frec, duracion } = req.body;
    const error = [];
@@ -118,13 +170,23 @@ export const editarFrecuenciaById = async (req, res) => {
    }
 }
 
-
-//asignamos ruta al formulario
+/**
+ *asignamos ruta
+ *
+ * @param {*} req - identificador de la ruta
+ * @param {*} res - 
+ */
 export const asignarRutas = async (req, res) => {
    const ruta = await Ruta.findById(req.params.id); 
    rutas.push(ruta);
 }
-//presentamos las rutas asignadas
+
+/**
+ *lista rutas
+ *
+ * @param {*} req - identificador de la ruta
+ * @param {*} res - 
+ */
 export const rutasAsignadas = async (req, res) => {
    const lista = [];
    const frecuencia = Frecuencia.findById(req.params.id);
@@ -137,7 +199,12 @@ export const rutasAsignadas = async (req, res) => {
    }
    console.log(lista)
 }
-
+/**
+ *obtenemos datos de usuario activo
+ *
+ * @param {*} req - identificador del usuario
+ * @param {*} res - 
+ */
 export const getDatos = async (req, res) => {
 
    const usu = req.session.usuActivo;

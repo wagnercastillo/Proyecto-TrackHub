@@ -8,7 +8,13 @@ const Unidades = require('../models/Unidad');
 const listunid = []
 const unid = []
 const frec = []
-//renderizamos vista de administracion de turnos
+//
+/**
+ *renderizamos vista de administracion de turnos
+ *
+ * @param {*} req -
+ * @param {*} res - renderizamos vista de administracion de turnos
+ */
 export const getTurnoPrincipal = async (req, res) => {
    const Turnos = await Turno.find({}).lean();
    const Frecuencia = await Frecuencias.find({}).lean();
@@ -21,7 +27,14 @@ export const getTurnoPrincipal = async (req, res) => {
       Turnos, Frecuencia, Unidad, listafrec
    });
 }
+
 //creamos turnos
+/**
+ *renderizamos vista de administracion de turnos
+ *
+ * @param {*} req -
+ * @param {*} res - renderizamos vista de administracion de turnos
+ */
 export const createTurno = async (req, res) => {
    
   
@@ -58,7 +71,12 @@ export const createTurno = async (req, res) => {
       res.redirect('/guardarTurno/add')
    }
 }
-//modificar el estado
+/**
+ *modificar el estado 
+ *
+ * @param {*} req - identificador del turno
+ * @param {*} res - modificar el estado 
+ */
 export const enabledTurno = async (req, res) => {
    const {
       id
@@ -75,8 +93,13 @@ export const getTurnoById = async (req, res) => {
       Turno
    });
 }
-//redirigimos al formulario de modificacion
-
+//
+/**
+ *redirigimos al formulario de modificacion
+ *
+ * @param {*} req - identificador del turno
+ * @param {*} res - redirigimos al formulario de modificacion
+ */
 export const updateTurnoById = async (req, res) => {
    const {
       id
@@ -88,8 +111,13 @@ export const updateTurnoById = async (req, res) => {
       tur, Frecuencia, Unidad
    })
 }
-//editamos los turnos con los datos del formulario
 
+/**
+ *editamos los turnos con los datos del formulario
+ *
+ * @param {*} req - cuerpo del formulario
+ * @param {*} res - redirige a la pagina de administracion de frecuencias
+ */
 export const editarTurnoById = async (req, res) => {
    const {
       hora,
@@ -128,7 +156,13 @@ export const editarTurnoById = async (req, res) => {
       res.redirect('/guardarTurno/add')
    }
 }
-//asignamos frecuencias al turno
+
+/**
+ *asignamos frecuencias al turno
+ *
+ * @param {*} req - identificador de la ruta
+ * @param {*} res - 
+ */
 export const asignarFrecuencias = async (req, res) => {
    frec.splice(0,1);
    const frecuencia = await Frecuencias.findById(req.params.id); 
@@ -136,7 +170,13 @@ export const asignarFrecuencias = async (req, res) => {
    listunid.push(frecuencia);
    console.log(frec)
 }
-//asignamos unidades al turno
+
+/**
+ *asignamos unidades al turno
+ *
+ * @param {*} req - identificador de la ruta
+ * @param {*} res - 
+ */
 export const asignarUnidades = async (req, res) => {
    unid.splice(0,1);
    const unidad = await Unidades.findById(req.params.id); 
