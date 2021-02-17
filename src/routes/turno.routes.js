@@ -20,4 +20,8 @@ router.post('/TurnoEdit/:id', turnoControllers.editarTurnoById)
 
 router.post('/guardarTurno/frecuencia:id', turnoControllers.editarTurnoById)
 
+router.get('/Turno/frecuencias/:id', turnoControllers.asignarFrecuencias)
+
+router.get('/Turno/unidades/:id', turnoControllers.asignarUnidades)
+
 module.exports = router;

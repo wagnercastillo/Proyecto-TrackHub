@@ -1,17 +1,24 @@
+import { decodeBase64 } from 'bcryptjs';
+
 const Turno = require('../models/Turno');
 const fs = require('fs-extra');
 const Frecuencias = require('../models/Frecuencia');
 const Unidades = require('../models/Unidad');
 
-const unid = {}
-const frec = {}
+const listunid = []
+const unid = []
+const frec = []
 
 export const getTurnoPrincipal = async (req, res) => {
    const Turnos = await Turno.find({}).lean();
    const Frecuencia = await Frecuencias.find({}).lean();
-   const Unidad = await Unidad.find({}).lean();
+   const Unidad = await Unidades.find({}).lean();
+//envio la frecuencia de un turno
+   const listafrec = await Frecuencias.find({frec:Frecuencia._id})
+   console.log(listafrec);
+   console.log(Turnos)
    res.render('turnos/turno', {
-      Turnos, Frecuencia, Unidad
+      Turnos, Frecuencia, Unidad, listafrec
    });
 }
 
@@ -47,8 +54,7 @@ export const createTurno = async (req, res) => {
          unid
       });
       await newTurno.save();
-      console.log(Frec)
-      console.log(unid)
+      console.log(newTurno)
       res.redirect('/guardarTurno/add')
    }
 }
@@ -75,9 +81,9 @@ export const updateTurnoById = async (req, res) => {
    } = req.params;
    const tur = await Turno.findById(id).lean();
    const Frecuencia = await Frecuencias.find({}).lean();
-   const unidad = await Unidad.find({}).lean();
+   const Unidad = await Unidades.find({}).lean();
    res.render('turnos/frm_editTurnos', {
-      tur, Frecuencia, unidad
+      tur, Frecuencia, Unidad
    })
 }
 
@@ -97,6 +103,8 @@ export const editarTurnoById = async (req, res) => {
          text: 'Ingrese los nuevos minutos del Turno'
       });
    }
+
+
    if (err.length > 0) {
       const {
          id
@@ -109,7 +117,9 @@ export const editarTurnoById = async (req, res) => {
    } else {
       const Turn = await Turno.findByIdAndUpdate(req.params.id, {
          hora,
-         minuto
+         minuto,
+         frec,
+         unid
       });
       console.log(Turn);
       res.redirect('/guardarTurno/add')
@@ -117,12 +127,17 @@ export const editarTurnoById = async (req, res) => {
 }
 
 export const asignarFrecuencias = async (req, res) => {
+   frec.splice(0,1);
    const frecuencia = await Frecuencias.findById(req.params.id); 
-   frec = frecuencia;
+   frec.push(frecuencia.id);
+   listunid.push(frecuencia);
+   console.log(frec)
 }
 
-export const asignarRutas = async (req, res) => {
+export const asignarUnidades = async (req, res) => {
+   unid.splice(0,1);
    const unidad = await Unidades.findById(req.params.id); 
-   unid = unidad;
+   unid.push(unidad.id);
+   console.log(unid)
 }
 
