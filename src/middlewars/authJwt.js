@@ -3,7 +3,7 @@ import config from "../config";
 import User from "../models/User";
 import Role from "../models/Rol";
 
-//middleware funcion para verificar si existe entre token
+/** middleware funcion para verificar si existe entre token */
 
 export const verifyToken = async (req, res, next) => {
     let token = req.session.token;
@@ -24,6 +24,7 @@ export const verifyToken = async (req, res, next) => {
         return res.status(401).send({ message: "Unauthorized!" });
     }
 }
+/** Verificamos si es administrador de cooperativa */
 export const isAdministradorCooperativo = async (req, res, next) => {
     try {
       const user = await User.findById(req.userId);
@@ -42,6 +43,7 @@ export const isAdministradorCooperativo = async (req, res, next) => {
       return res.status(500).send({ message: error });
     }
   };
+  /** Verificamos si es administrado general*/
   export const isAdministradorGeneral = async (req, res, next) => {
     try {
       const user = await User.findById(req.userId);

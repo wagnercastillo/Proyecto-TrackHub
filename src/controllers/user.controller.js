@@ -3,19 +3,19 @@ import jwt from 'jsonwebtoken'
 import config from '../config'
 import Rol from '../models/Rol';
 import { json } from 'express';
-//Renderisamos pestana Administraccion general
+/** Renderisamos pestana Administraccion general */
 export const inicioAdmin = async (req, res) => {
     const sms = req.flash('errors');
     res.render('AdminGeneral/AdminGeneral', sms);
 }
-//Regitro para usuarios
+/**Registro para usuarios */
 export const registroAdmin = async (req, res) => {
     const sms = req.flash('errors');
     res.render('users/signupAdm', sms, );
 }
 
 export const singinAdm = async (req, res) => {
-    //Validamos campos
+    /** Validamos campos*/
     const { cedula, nombre, apellido, correo, contrasenia, roles } = req.body;
     const err = [];
     if (!nombre) {
@@ -36,7 +36,7 @@ export const singinAdm = async (req, res) => {
     if (err.length > 0) {
         res.render('users/signupAdm', {err});
     } else {
-        //Guardamos el objeto
+        /** Guardamos el objeto */
         const newUser = new Usuario({
             cedula,
             nombre,
@@ -44,7 +44,7 @@ export const singinAdm = async (req, res) => {
             correo,
             contrasenia: await Usuario.encryptPassword(contrasenia)
         })
-
+        /** Verificamos el roll del administrador de cooperativa */
         if (req.body.roles) {
             const foundRol = await Rol.find({ nombre: { $in: roles } });
             newUser.roles = foundRol.map((rol) => rol._id);
@@ -55,7 +55,7 @@ export const singinAdm = async (req, res) => {
         const savedUser = await newUser.save();
         console.log(savedUser)
 
-        // Creamos un token
+        /** Creamos un token para el usuario */
         const token = jwt.sign({ id: savedUser._id }, config.SECRET, {
             expiresIn: 86400, // 24 hours
         });
