@@ -2,7 +2,7 @@ import {
     Router
 } from 'express'
 const router = Router()
-
+//Llamamos los controladores de cada modelo
 import * as authCtrl from '../controllers/auth.controller'
 
 import { authJwt } from "../middlewars";
