@@ -18,4 +18,6 @@ router.get('/TurnoEdit/:id', turnoControllers.updateTurnoById)
 
 router.post('/TurnoEdit/:id', turnoControllers.editarTurnoById)
 
+router.post('/guardarTurno/frecuencia:id', turnoControllers.editarTurnoById)
+
 module.exports = router;

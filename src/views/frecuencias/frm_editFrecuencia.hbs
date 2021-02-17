@@ -15,7 +15,7 @@
                     <label style="color: white;">Origen</label>
                     <input type="text" name="origen" class="form-control" value="{{frec.origen}}">
                 </div>
-                <div class="form-group" >
+                <div class="form-group">
                     <label style="color: white;">Destino</label>
                     <input type="text" name="destino" class="form-control" value="{{frec.destino}}">
                 </div>
@@ -27,7 +27,20 @@
                     <label style="color: white;">Duracion</label>
                     <input type="Number" name="duracion" class="form-control" value="{{frec.duracion}}">
                 </div>
-                
+                <div class="u-form-group u-form-group-3">
+                    <label class="u-label" style="color: ivory; ">Asignar Rutas:</label>
+                    </br>
+                    <a href="" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#static" style="background-color: #f3f3f3; border-color: black; margin-left: -480px; margin-bottom: 40px; margin-top: 20px;/ * * Verde /
+border: none;
+color: blanco;
+padding: 1px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+
+">Asignar</a>
+                </div>
                 <button class="btn tbn-primary" style="background-color: #FF5733; / * * Verde /
 border: none;
 color: blanco;
@@ -41,3 +54,27 @@ font-size: 16px;"> Guardar</button>
         </div>
     </div>
 </nav>
+<div class="modal" id="static" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Rutas registradas</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    {{#each Rutas}}
+                    <a href="/frecuencia/rutas/{{_id}}" class="btn btn-secondary">
+                        {{origen}}-{{destino}}
+                    </a>
+                    {{/each}}
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>

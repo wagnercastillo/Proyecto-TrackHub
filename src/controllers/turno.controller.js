@@ -1,16 +1,26 @@
 const Turno = require('../models/Turno');
 const fs = require('fs-extra');
+const Frecuencias = require('../models/Frecuencia');
+const Unidades = require('../models/Unidad');
+
+const unid = {}
+const frec = {}
 
 export const getTurnoPrincipal = async (req, res) => {
    const Turnos = await Turno.find({}).lean();
+   const Frecuencia = await Frecuencias.find({}).lean();
+   const Unidad = await Unidad.find({}).lean();
    res.render('turnos/turno', {
-      Turnos
+      Turnos, Frecuencia, Unidad
    });
 }
+
 export const createTurno = async (req, res) => {
+   
+  
    const {
       hora,
-      minuto
+      minuto,
    } = req.body;
    const err = [];
    if (!hora) {
@@ -33,8 +43,12 @@ export const createTurno = async (req, res) => {
       const newTurno = new Turno({
          hora,
          minuto,
+         frec,
+         unid
       });
       await newTurno.save();
+      console.log(Frec)
+      console.log(unid)
       res.redirect('/guardarTurno/add')
    }
 }
@@ -60,8 +74,10 @@ export const updateTurnoById = async (req, res) => {
       id
    } = req.params;
    const tur = await Turno.findById(id).lean();
+   const Frecuencia = await Frecuencias.find({}).lean();
+   const unidad = await Unidad.find({}).lean();
    res.render('turnos/frm_editTurnos', {
-      tur
+      tur, Frecuencia, unidad
    })
 }
 
@@ -99,3 +115,14 @@ export const editarTurnoById = async (req, res) => {
       res.redirect('/guardarTurno/add')
    }
 }
+
+export const asignarFrecuencias = async (req, res) => {
+   const frecuencia = await Frecuencias.findById(req.params.id); 
+   frec = frecuencia;
+}
+
+export const asignarRutas = async (req, res) => {
+   const unidad = await Unidades.findById(req.params.id); 
+   unid = unidad;
+}
+

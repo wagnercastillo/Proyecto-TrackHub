@@ -15,6 +15,7 @@ const Unidad = require('../models/Unidad');
             marca,
             modelo,
             placa,
+            correoChofer
 
          } = req.body;
          const rr = [];
@@ -29,6 +30,11 @@ const Unidad = require('../models/Unidad');
             });
          }
          if (!modelo) {
+            rr.push({
+               text: 'Ingrese el modelo de la unidad'
+            });
+         }
+         if (!correoChofer) {
             rr.push({
                text: 'Ingrese el modelo de la unidad'
             });
@@ -51,7 +57,8 @@ const Unidad = require('../models/Unidad');
                placa,
                marca,
                modelo,
-               capacidad
+               capacidad,
+               correoChofer
 
             });
             await newUnidad.save();
@@ -93,6 +100,7 @@ const Unidad = require('../models/Unidad');
             marca,
             modelo,
             capacidad,
+            correoChofer
            
          } = req.body;
          const rr = [];
@@ -109,6 +117,11 @@ const Unidad = require('../models/Unidad');
          if (!modelo) {
             rr.push({
                text: 'Ingrese del nombre del modelo'
+            });
+         }
+         if (!correoChofer) {
+            rr.push({
+               text: 'a'
             });
          }
          if (!capacidad) {
@@ -134,9 +147,8 @@ const Unidad = require('../models/Unidad');
                placa,
                marca,
                modelo,
-               capacidad
-               
-
+               capacidad,
+               correoChofer
             });
             console.log(unidades);
             res.redirect('/guardarUnidades/add');

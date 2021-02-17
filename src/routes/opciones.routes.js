@@ -7,7 +7,7 @@ import * as opcionesControllers from '../controllers/opciones.controller'
 import { authJwt } from "../middlewars";
 
 
-router.get('/Opciones',[authJwt.verifyToken, authJwt.isCliente], opcionesControllers.Principal)
+router.get('/Opciones', opcionesControllers.Principal)
 router.get('/Configuracion', opcionesControllers.getConfiguracion)
 router.post('/Configuracion', opcionesControllers.editarcontrasenia)
 router.get('/enabledUsuario/:id', opcionesControllers.enabledUsuario)

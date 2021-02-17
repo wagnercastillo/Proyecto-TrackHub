@@ -22,7 +22,7 @@ router.post('/frecuenciaEdit/:id', frecuenciaControllers.editarFrecuenciaById)
 
 router.get('/frecuencia/rutas/:id', frecuenciaControllers.asignarRutas)
 
-
+router.get('/frecuencia/rutasAsignadas/:id', frecuenciaControllers.rutasAsignadas)
 
 router.get('/Administrador/Boleteria', frecuenciaControllers.BoleteriaAdmin)
 

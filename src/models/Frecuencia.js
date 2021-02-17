@@ -25,8 +25,8 @@ const Frecuencia = new Schema({
         required: true
     },
     rutas: [{
-        type: Schema.Types.ObjectId,
-        ref: 'rutas'
+        ref: "rutas",
+        type: Schema.Types.ObjectId
     }]
 }, {
     timestamps: true,
