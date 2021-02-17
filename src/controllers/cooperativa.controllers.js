@@ -11,8 +11,9 @@ cloudinary.config({
 
 const fs = require('fs-extra');
 //Reireccion de los perfiles
+
 export const Principal = async (req, res) => {
-   ///
+   /** @type {*} */
    const user = req.session.usuActivo;
    const roles = req.session.roles;
    if (roles != null) {
@@ -43,8 +44,14 @@ export const Principal = async (req, res) => {
 
    console.log('usuario...........................')
 }
-//Renderizamos la pestana cooperativas
-export const getCooperativaPrincipal = async (req, res) => {
+//Rende
+/**
+ *
+ *
+ * @param {*} req
+ * @param {*} res
+ */
+const getCooperativaPrincipal = async (req, res) => {
    const cooperativas = await Cooperativa.find({}).lean();
    const usuarios = await Usuario.find({}).lean();
    res.render('cooperativas/frm_regCooperativa', { cooperativas, usuarios });
