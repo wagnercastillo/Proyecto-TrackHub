@@ -1,5 +1,5 @@
 const Unidad = require('../models/Unidad');
-
+      //renderizamos vista de administracion de unidades
       export const getUnidadPrincipal = async (req, res) => {
          const unidades = await Unidad.find({}).lean();
          res.render('Unidad/Unidades', {
@@ -7,7 +7,7 @@ const Unidad = require('../models/Unidad');
          });
         
       }
-
+//creamos unidades
       export const createdUnidades = async (req, res) => {
 
          const {
@@ -67,7 +67,7 @@ const Unidad = require('../models/Unidad');
          }
       }
 
-      //modificar
+      //modificar el estado de la unidad
       export const enabledUnidades = async (req, res) => {
          const {
             id
@@ -84,6 +84,8 @@ const Unidad = require('../models/Unidad');
             unidades
          });
       }
+      //redirigimos al formulario de modificacion
+
       export const updateUnidadesById = async (req, res) => {
          const {
             id
@@ -93,6 +95,7 @@ const Unidad = require('../models/Unidad');
             unid
          })
       }
+//editamos las unidades con los datos del formulario
 
       export const editarUnidadById = async (req, res) => {
          const {

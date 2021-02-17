@@ -1,10 +1,11 @@
 const Ruta = require('../models/Ruta');
 
-
+//rederizamos la ventana de administracion de rutas
 export const getRutaPrincipal = async (req, res) => {
    const Rutas = await Ruta.find({}).lean();
    res.render('rutas/ruta', { Rutas });
 }
+//creamos rutas
 export const createRuta = async (req, res) => {
    const { origen, destino,precio } = req.body;
    const errors = [];
@@ -33,7 +34,7 @@ export const createRuta = async (req, res) => {
    }
 }
 
-//modificar
+//modificar estado
 export const enabledRuta = async (req, res) => {
    const { id } = req.params;
    const rut = await Ruta.findById(id);
@@ -47,11 +48,13 @@ export const getRutaById = async (req, res) => {
    const Ruta = await Ruta.findById(req.params.id);
    res.render('partials/modificar_Ruta_formulario', { Ruta });
 }
+//redirigimos al formulario de modificacion
 export const updateRutaById = async (req, res) => {
    const { id } = req.params;
    const rut = await Ruta.findById(id).lean();
    res.render('rutas/frm_editRutas', { rut })
 }
+//editamos las frecuencias con los datos del formulario
 
 export const editarRutaById = async (req, res) => {
    const { origen, destino,precio } = req.body;
