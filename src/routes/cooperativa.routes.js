@@ -1,6 +1,6 @@
 const {Router} = require('express');
 const router = Router();
-
+//Llamamos los controladores del modelo cooperatyivs
 import * as cooperativaControllers from '../controllers/cooperativa.controllers'
 import { authJwt } from "../middlewars";
 

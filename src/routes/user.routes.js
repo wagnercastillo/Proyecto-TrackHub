@@ -1,6 +1,6 @@
 import { Router } from "express";
 const router = Router();
-
+//Llamamos los controladores de cada modelo
 import * as admin from '../controllers/user.controller';
 
 import { authJwt,verifySignup } from "../middlewars";
