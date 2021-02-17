@@ -4,14 +4,12 @@ const {
 const router = Router();
 
 import * as boleteriaControllers from '../controllers/boleto.controller'
-import {
-    verifyToken
-} from '../middlewars'
+import { authJwt } from "../middlewars";
 
 
-router.get('/Boleto/add', boleteriaControllers.getBoletoPrincipal )
+router.get('/Boleto/add', [authJwt.verifyToken, authJwt.isCliente], boleteriaControllers.getBoletoPrincipal )
 
-router.post('/Boleto/add', boleteriaControllers.createdBoletos)
+router.post('/Boleto/add',[authJwt.verifyToken, authJwt.isCliente], boleteriaControllers.createdBoletos)
 /*
 router.get('/enabledCooperativa/:id', boleteriaControllers.enabledCooperativa)
 

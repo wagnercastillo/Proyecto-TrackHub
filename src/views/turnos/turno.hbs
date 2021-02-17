@@ -39,12 +39,7 @@
         }
     }
 </script>
-<script>
-    const aux = selectElement.addEventListener('change', (event) => {
-    const resultado = document.querySelector('.resultado');
-    resultado.textContent = `Te gusta el sabor ${event.target.value}`;
-  });
-</script>
+
 <!---LOCALIZACION DEL FORMULARIO-->
 <main>
     <div class="container-fluid">
@@ -65,29 +60,29 @@
                             {{/each}}
                             <form action="/guardarTurno/add" method="POST" enctype="multipart/form-data" class=""
                                 style="" source="custom" name="form">
-                                <div class="mb-3">
+                                <div class="mb-3" style="margin-bottom: 30px;">
                                     <label class="">Hora</label>
                                     <input type="Number" name="hora" class="">
                                 </div>
-                                <div class="mb-3">
+                                <div class="mb-3"style="margin-bottom: 30px;">
                                     <label class="u-label">Minuto</label>
                                     <input type="Number" name="minuto">
                                 </div>
 
-                                <div class="u-form-group u-form-group-3">
-                                                <label class="u-label">Asignar Frecuencia:</label>
-                                                </br>
-                                                <a href="" class="btn btn-info"
-                                                    data-bs-toggle="modal" data-bs-target="#staticBackdrop">Asignar</a>
-                                            </div>
+                                <div class="u-form-group u-form-group-3"style="margin-bottom: 10px;">
+                                    <label class="u-label">Asignar Frecuencia:</label>
+                                    
+                                    <a href="" class="btn btn-secondary" data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop">Asignar</a>
+                                </div>
 
                                 <!--  -->
-                                <div class="u-form-group u-form-group-3">
-                                                <label class="u-label">Asignar Unidad:</label>
-                                                </br>
-                                                <a href="" class="btn btn-info"
-                                                    data-bs-toggle="modal" data-bs-target="#static">Asignar</a>
-                                            </div>
+                                <div class="u-form-group u-form-group-3"style="margin-bottom: 10px;">
+                                    <label class="u-label">Asignar Unidad:</label>
+                                    
+                                    <a href="" class="btn btn-secondary" data-bs-toggle="modal"
+                                        data-bs-target="#static">Asignar</a>
+                                </div>
                                 <button class="btn tbn-primary" style="background-color: #c76414; / * * Verde /
 border: none;
 color: blanco;
@@ -108,7 +103,53 @@ font-size: 16px;"> Guardar</button>
 
     </div>
 </main>
+<div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Lista de Frecuencias (Origen / Destino)</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {{#each Frecuencia}}
+                <form>
 
+                    <a href="/Turno/frecuencias/{{_id}}" class="btn btn-secondary"
+                        style="margin-bottom: 10px; font-size: 16px;">
+                        {{origen}} / {{destino}}
+                    </a>
+
+                </form>
+                {{/each}}
+            </div>
+ 
+        </div>
+    </div>
+</div>
+<div class="modal" id="static" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Lista de Unidades (Placa / Chofer)</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {{#each Unidad}}
+                <form>
+
+                    <a href="/Turno/unidades/{{_id}}" class="btn btn-secondary"
+                        style="margin-bottom: 10px; font-size: 16px;" >
+                        {{placa}} / {{correoChofer}}
+                    </a>
+
+                </form>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
 <!--Localizacion de la tabla de Turnos-->
 <div id="layoutSidenav_content">
     <main>
@@ -136,9 +177,11 @@ font-size: 16px;"> Guardar</button>
                             <tbody>
                                 {{#each Turnos}}
                                 <tr>
-                                    <td>Loja-Cuenca</td>
+                                    
+                                    <td>{{frec}}</td>
+                                    
                                     <td>{{hora}}:{{minuto}}</td>
-                                    <td>Hino Mavesa GD</td>
+                                    <td>{{unid}}</td>
                                     <td>
                                         {{#if estado}}
                                         <a href="/enabledTurno/{{_id}}" class="btn btn-success"
@@ -163,6 +206,7 @@ font-size: 16px;"> Guardar</button>
         </div>
     </main>
 </div>
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
     crossorigin="anonymous"></script>

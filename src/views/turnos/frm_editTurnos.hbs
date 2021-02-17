@@ -21,38 +21,18 @@
                 </div>
                 <!--LOCALIZACION DE LOS MODALES-->
                 <div class="form-group">
-                    <label style="color: white;">Seleccionar
-                        Frecuencia </label>
-                    <div class="mb-3">
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Elegir Frecuencia
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                {{#each Frecuencia}}
-                                <li><a class="dropdown-item" href="#">{{origen}} - {{destino}}</a></li>
-                                {{/each}}
-                            </ul>
-                        </div>
+                    <div class="u-form-group u-form-group-3" style="margin-bottom: 10px;">
+                        <label class="u-label">Asignar Frecuencia:</label>
+
+                        <a href="" class="btn btn-secondary" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">Asignar</a>
                     </div>
-                    <!-- Modal--->
-                    <!-- Button trigger modal -->
-                    <label style="color: white;">Seleccionar
-                        Unidad </label>
-                    <div class="mb-3">
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Elegir Unidad
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                {{#each unidad}}
-                                <li><a class="dropdown-item" href="#">Placa: {{placa}} Chofer:
-                                        {{correoChofer}}</a></li>
-                                {{/each}}
-                            </ul>
-                        </div>
+
+                    <!--  -->
+                    <div class="u-form-group u-form-group-3" style="margin-bottom: 10px;">
+                        <label class="u-label">Asignar Unidad:</label>
+
+                        <a href="" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#static">Asignar</a>
                     </div>
                     <button class="btn tbn-primary" style="background-color: #aa6e13; / * * Verde /
 border: none;
@@ -67,3 +47,50 @@ font-size: 16px;"> Guardar</button>
         </div>
     </div>
 </nav>
+<div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Lista de Frecuencias (Origen / Destino)</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {{#each Frecuencia}}
+                <form>
+
+                    <a href="/Turno/frecuencias/{{_id}}" class="btn btn-secondary"
+                        style="margin-bottom: 10px; font-size: 16px;">
+                        {{origen}} / {{destino}}
+                    </a>
+
+                </form>
+                {{/each}}
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal" id="static" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Lista de Unidades (Placa / Chofer)</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {{#each Unidad}}
+                <form>
+
+                    <a href="/Turno/unidades/{{_id}}" class="btn btn-secondary"
+                        style="margin-bottom: 10px; font-size: 16px;">
+                        {{placa}} / {{correoChofer}}
+                    </a>
+
+                </form>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>

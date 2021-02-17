@@ -12,7 +12,7 @@ export const getConfiguracion = async (req, res) => {
     res.render('Usuario/Configuracion',{usu})
 
 }
-
+//editamos la contraseña
 export const editarcontrasenia = async (req, res) => {
     const {
        contra,
@@ -53,7 +53,7 @@ export const editarcontrasenia = async (req, res) => {
        res.redirect('Usuario/Configuracion');
     }
  }  
-
+//cambiamos el estado del usuario
  export const enabledUsuario = async (req, res) => {
     console.log('-----------')
     console.log(req.session.usuActivo._id)
@@ -67,7 +67,7 @@ export const editarcontrasenia = async (req, res) => {
     res.redirect('/');
  }
  
-
+//renderizamos el historial
 export const getHistorial = async (req, res) => {
 
     res.render('Usuario/Historial')
